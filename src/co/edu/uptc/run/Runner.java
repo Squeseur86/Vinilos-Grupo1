@@ -30,31 +30,44 @@ public class Runner {
 		}
 		
 		}while(responseBool != true);
-		System.out.println("put the name of the album");
-		name =sc.next();
-		System.out.println("put the image url ");
-		cover=sc.next();
-		System.out.println("write the album description");
-		description=sc.next();
-		System.out.println("put the hours of the album");
-		hours = sc.nextInt();
-		System.out.println("put the minutes of the album");
-		minutes=sc.nextInt();
-		System.out.println("put the seconds of the album");
-		seconds=sc.nextInt();
-		System.out.println("put the year that was released the album");
-		year=sc.nextInt();
-		System.out.println("put the month(1-12) that was released the album");
-		month=sc.nextInt()-1;
-		System.out.println("put the day that was released the album");
-		date=sc.nextInt();
-		System.out.println("write the genre of the album");
-		genre=sc.next();
+		detailAlbum(sc);
 		
+		
+		System.out.println("Do you want edit the album");
+		System.out.println("write y or n");
+		
+		response = sc.next();
+		if(response.equals("y")) {
+			detailAlbum(sc);
+		}else {
+			System.out.println("bye");
+		}
+		
+	}
+	public static void detailAlbum(Scanner sc) {
+		AlbumControl a1 = new AlbumControl();
+		System.out.println("put the name of the album");
+		String name =sc.next();
+		System.out.println("put the image url ");
+		String cover=sc.next();
+		System.out.println("write the album description");
+		String description=sc.next();
+		System.out.println("put the hours of the album");
+		int hours = sc.nextInt();
+		System.out.println("put the minutes of the album");
+		int minutes=sc.nextInt();
+		System.out.println("put the seconds of the album");
+		int seconds=sc.nextInt();
+		System.out.println("put the year that was released the album");
+		int year=sc.nextInt();
+		System.out.println("put the month(1-12) that was released the album");
+		int month=sc.nextInt()-1;
+		System.out.println("put the day that was released the album");
+		int date=sc.nextInt();
+		System.out.println("write the genre of the album");
+		String genre=sc.next();
 		a1.createAlbum(name, cover, description, year, month, date, genre, hours, minutes, seconds);
 		a1.showAlbum();
-
-		
 	}
 
 }
