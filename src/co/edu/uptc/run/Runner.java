@@ -38,57 +38,38 @@ public class Runner {
 			a1.setArrayAlbum(n);
 			for(int i=0;i<n;i++)
 			{
-				
+				a1.detailAlbum(sc,i);
 			}
 		}
 		System.out.println("Chosse the option");
 		System.out.println("1 Show the list album");
+		System.out.println("2 edit album");
+		System.out.println("3 delete album");
 		response1=sc.nextInt();
 		if(response1==1) {
 			for(int i=0;i<n;i++) {
 				System.out.println(" ");
 				a1.listAlbum(i);
 			}
+		}else if(response1==2) {
+			System.out.println("which album do yo want to edit");
+			for(int i=0;i<n;i++) {
+				System.out.println(" ");
+				a1.listAlbum(i);
+			}
+			n=sc.nextInt();
+			a1.detailAlbum(sc,n-1);
+		}else if(response1==3)
+		{
+			System.out.println("which album do yo want to delete");
+			for(int i=0;i<n;i++) {
+				System.out.println(" ");
+				a1.listAlbum(i);
+			}
+			n=sc.nextInt();
+			a1.deleteAlbum(n-1);
+			a1.listAlbum(n-1);
 		}
-
-		detailAlbum(sc);
-		
-		
-		System.out.println("Do you want edit the album");
-		System.out.println("write y or n");
-		
-		response = sc.next();
-		if(response.equals("y")) {
-			detailAlbum(sc);
-		}else {
-			System.out.println("bye");
-		}
-		
-	}
-	public static void detailAlbum(Scanner sc) {
-		AlbumControl a1 = new AlbumControl();
-		System.out.println("which album do you want to edit ");
-		int n= sc.nextInt();
-		System.out.println("put the name of the album");
-		String name =sc.next();
-		System.out.println("put the image url ");
-		String cover=sc.next();
-		System.out.println("write the album description");
-		String description=sc.next();
-		System.out.println("put the hours of the album");
-		int hours = sc.nextInt();
-		System.out.println("put the minutes of the album");
-		int minutes=sc.nextInt();
-		System.out.println("put the seconds of the album");
-		int seconds=sc.nextInt();
-		System.out.println("put the year that was released the album");
-		int year=sc.nextInt();
-		System.out.println("put the month(1-12) that was released the album");
-		int month=sc.nextInt()-1;
-		System.out.println("put the day that was released the album");
-		int date=sc.nextInt();
-		System.out.println("write the genre of the album");
-		String genre=sc.next();
-		a1.createAlbum(name, cover, description, year, month, date, genre, hours, minutes, seconds,n);
+	
 	}
 }

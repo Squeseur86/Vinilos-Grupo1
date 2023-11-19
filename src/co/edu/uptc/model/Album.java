@@ -57,4 +57,7 @@ public class Album {
 		genre = new String[nAl];
 		recordLabel=new Duration[nAl];
 	}
+	public void restartDate(int n) {
+		releaseDate[n].clear();;
+	}
 }

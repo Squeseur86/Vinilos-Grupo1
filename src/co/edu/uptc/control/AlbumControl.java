@@ -1,16 +1,19 @@
 package co.edu.uptc.control;
 
+import java.util.Scanner;
+
 import co.edu.uptc.model.Album;
 
 public class AlbumControl {
-	Album a1 = new Album();
+	static Album a1 = new Album();
 	
 	public AlbumControl(){
 		a1=new Album();
 		
 	}
 	 
-	public void createAlbum(String name,String cover,String description,int year,int month,int date,String genre,int hours,int minutes,int seconds,int n) {
+	public static void createAlbum(String name,String cover,String description,int year,int month,int date,String genre,int hours,int minutes,int seconds,int n) {
+		
 		a1.setName(name,n);
 		a1.setCover(cover,n);
 		a1.setDescription(description,n);
@@ -26,7 +29,38 @@ public class AlbumControl {
 		System.out.println("genre: "+a1.getGenre(n) );
 		System.out.println("Record Label: "+a1.getRecordLabel(n) );	
 	}
+	public static void detailAlbum(Scanner sc,int n) {
+		System.out.println("put the name of the album");
+		String name =sc.next();
+		System.out.println("put the image url ");
+		String cover=sc.next();
+		System.out.println("write the album description");
+		String description=sc.next();
+		System.out.println("put the hours of the album");
+		int hours = sc.nextInt();
+		System.out.println("put the minutes of the album");
+		int minutes=sc.nextInt();
+		System.out.println("put the seconds of the album");
+		int seconds=sc.nextInt();
+		System.out.println("put the year that was released the album");
+		int year=sc.nextInt();
+		System.out.println("put the month(1-12) that was released the album");
+		int month=sc.nextInt()-1;
+		System.out.println("put the day that was released the album");
+		int date=sc.nextInt();
+		System.out.println("write the genre of the album");
+		String genre=sc.next();
+		createAlbum(name, cover, description, year, month, date, genre, hours, minutes, seconds,n);
+	}
 	public void setArrayAlbum(int n) {
 		a1.setArrays(n);
+	}
+	public void deleteAlbum(int n) {
+		a1.setName("",n);
+		a1.setCover("",n);
+		a1.setDescription("",n);
+		a1.restartDate(n);
+		a1.setGenre("",n);
+		a1.setRecordLabel(0,0,0,n);	
 	}
 }
