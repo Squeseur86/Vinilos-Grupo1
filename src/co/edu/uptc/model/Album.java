@@ -5,49 +5,56 @@ import java.util.Date;
 import java.time.Duration;
 
 public class Album {
-	private String name;
-	private String cover;
-	private String description;
-	private Calendar releaseDate = Calendar.getInstance();
-	private String genre;
-	private Duration recordLabel;
-	public String getName() {
-		return name;
+	private String name[];
+	private String cover[];
+	private String description[];
+	private Calendar[] releaseDate;
+	private String genre[];
+	private Duration recordLabel[];
+	public String getName(int n) {
+		return name[n];
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String name,int n) {
+		this.name[n] = name;
 	}
-	public String getCover() {
-		return cover;
+	public String getCover(int n) {
+		return cover[n];
 	}
-	public void setCover(String cover) {
-		this.cover = cover;
+	public void setCover(String cover,int n) {
+		this.cover[n] = cover;
 	}
-	public String getDescription() {
-		return description;
+	public String getDescription(int n) {
+		return description[n];
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDescription(String description,int n) {
+		this.description[n] = description;
 	}
-	public Date getReleaseDate() {
-		return releaseDate.getTime();
+	public Date getReleaseDate(int n) {
+		return releaseDate[n].getTime();
 	}
-	public void setReleaseDate(int year,int month,int date) {
-		this.releaseDate.clear();
-		this.releaseDate.set(year, month, date);
+	public void setReleaseDate(int year,int month,int date,int n) {
+		releaseDate[n]=Calendar.getInstance();
+		this.releaseDate[n].set(year, month, date,0,0,0);
+		this.releaseDate[n].set(Calendar.MILLISECOND, 0);
 	}
-	public String getGenre() {
-		return genre;
+	public String getGenre(int n) {
+		return genre[n];
 	}
-	public void setGenre(String genre) {
-		this.genre = genre;
+	public void setGenre(String genre,int n) {
+		this.genre[n] = genre;
 	}
-	public Duration getRecordLabel() {
-		return recordLabel;
+	public Duration getRecordLabel(int n) {
+		return recordLabel[n];
 	}
-	public void setRecordLabel(int hours,int minutes,int seconds) {
-		recordLabel = Duration.ofHours(hours).plusMinutes(minutes).plusSeconds(seconds);
+	public void setRecordLabel(int hours,int minutes,int seconds,int n) {
+		recordLabel[n] = Duration.ofHours(hours).plusMinutes(minutes).plusSeconds(seconds);
 	}
-	
-	
+	public void setArrays(int nAl) {
+		name= new String[nAl] ;
+		cover= new String[nAl];
+		description= new String[nAl];
+		releaseDate= new Calendar[nAl];
+		genre = new String[nAl];
+		recordLabel=new Duration[nAl];
+	}
 }

@@ -10,21 +10,23 @@ public class AlbumControl {
 		
 	}
 	 
-	public void createAlbum(String name,String cover,String description,int year,int month,int date,String genre,int hours,int minutes,int seconds) {
-		a1.setName(name);
-		a1.setCover(cover);
-		a1.setDescription(description);
-		a1.setReleaseDate(year, month, date);
-		a1.setGenre(genre);
-		a1.setRecordLabel(hours, minutes, seconds);	
+	public void createAlbum(String name,String cover,String description,int year,int month,int date,String genre,int hours,int minutes,int seconds,int n) {
+		a1.setName(name,n);
+		a1.setCover(cover,n);
+		a1.setDescription(description,n);
+		a1.setReleaseDate(year, month, date,n);
+		a1.setGenre(genre,n);
+		a1.setRecordLabel(hours, minutes, seconds,n);	
 	}
-	public void showAlbum() {
-		System.out.println("name: "+a1.getName() );
-		System.out.println("cover: "+a1.getCover() );
-		System.out.println("description: "+a1.getDescription() );
-		System.out.println("realse date: "+a1.getReleaseDate() );
-		System.out.println("genre: "+a1.getGenre() );
-		System.out.println("Record Label: "+a1.getRecordLabel() );
-
+	public void listAlbum(int n) {
+		System.out.println(n+1+" Album name: "+a1.getName(n) );
+		System.out.println("cover: "+a1.getCover(n) );
+		System.out.println("description: "+a1.getDescription(n) );
+		System.out.println("realse date: "+a1.getReleaseDate(n) );
+		System.out.println("genre: "+a1.getGenre(n) );
+		System.out.println("Record Label: "+a1.getRecordLabel(n) );	
+	}
+	public void setArrayAlbum(int n) {
+		a1.setArrays(n);
 	}
 }
