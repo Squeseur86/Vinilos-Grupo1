@@ -19,7 +19,7 @@ public class AlbumTest {
 		month = 05;
 		date = 26;
 		hours = 1;
-		minutes = 17;
+		minutes = 17;  
 		seconds = 00;
 		nam = name;
 		cov = cover;
