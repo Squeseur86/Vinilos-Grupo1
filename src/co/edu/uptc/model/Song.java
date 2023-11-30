@@ -32,5 +32,5 @@ public class Song {
 	}
 	public void setRecordSong(int minutes, int seconds) {
 		this.recordSong = Duration.ofMinutes(minutes).plusSeconds(seconds);
-}
+	}
 }

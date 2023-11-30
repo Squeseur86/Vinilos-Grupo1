@@ -1,5 +1,7 @@
 package co.edu.uptc.control;
 
+import java.time.Duration;
+
 import co.edu.uptc.model.Song;
 
 public class SongControl {
@@ -22,5 +24,13 @@ public class SongControl {
 		System.out.println("Year release: "+ sg.getYearRelease());
 		System.out.println("Genre song: "+ sg.getGenreSong());
 		System.out.println("Record Label: "+ sg.getRecordSong());	
+	}
+	public void EditSong(String nameSong,String yearRelease,String genreSong,int minutes,int seconds)
+	{
+		sg.setNameSong(nameSong);
+		sg.setYearRelease(yearRelease);
+		sg.setGenreSong(genreSong);
+		sg.setRecordSong(minutes, seconds);
+		
 	}
 }
