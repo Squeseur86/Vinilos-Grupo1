@@ -6,6 +6,7 @@ import co.edu.uptc.model.Album;
 
 public class AlbumControl {
 	static Album a1 = new Album();
+	static CollectorControl cc = new CollectorControl();
 	
 	public AlbumControl(){
 		a1=new Album();

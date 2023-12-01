@@ -9,14 +9,33 @@ public class Runner {
 		Scanner sc = new Scanner(System.in);
 		AlbumControl a1 = new AlbumControl();
 		SongControl Sco = new SongControl();
+		CollectorControl cc = new CollectorControl();
 		String response, option;
 		boolean responseBool, x;
 		String name, nameSong, yearRelease;
+		String username, tellphone, email, password, message;
 		String cover;
 		String description;
 		int hours,minutes,seconds,year,month,date,n=0,response1;
 		String genre, genreSong;
-		
+		System.out.println("Welcome to the vinyl store, regsister");
+		System.out.println("enter your username");
+		username = sc.next();
+		System.out.println("enter your number tellphone ten digits");
+		tellphone = sc.next();
+		while(tellphone.length()!=10) {
+			System.out.println("this number tellphone is invalid");
+			tellphone = sc.next();
+		}
+		System.out.println("enter your email ....@gmail.com");
+		email = sc.next() + "@gmail.com ";
+		System.out.println("enter your password 8 charts");
+		password = sc.next();
+		while(password.length()<8) {
+			System.out.println("this password is invalid");
+			password = sc.next();
+		}
+		cc.registCollector(username, tellphone, email, password);
 		System.out.println("do you want to create a new album?");
 		do{
 		System.out.println("write y or n");
@@ -45,7 +64,8 @@ public class Runner {
 		System.out.println("1 Show the list album");
 		System.out.println("2 edit album");
 		System.out.println("3 delete album");
-		System.out.println("4. Continue");
+		System.out.println("4 comment album");
+		System.out.println("5. Continue");
 		response1=sc.nextInt();
 		if(response1==1) {
 			for(int i=0;i<n;i++) {
@@ -69,6 +89,16 @@ public class Runner {
 			n=sc.nextInt();
 			a1.deleteAlbum(n-1);
 			a1.listAlbum(n-1);
+		}else if( response1 ==4){
+			System.out.println("which album do yo want to let a message");
+			for(int i=0;i<n;i++) {
+				System.out.println(" ");
+				a1.listAlbum(i);
+			}
+		n = sc.nextInt();
+		a1.listAlbum(n-1);
+		message = sc.next();
+		cc.createMessage(message);	
 		}else {
 			System.out.println("Do you want to create a new song");
 			do {
@@ -99,8 +129,7 @@ public class Runner {
 			response1=sc.nextInt();
 			if(response1 == 1) {
 				
-			}else if(response1 == 2){
-				
+			}else if(response1 == 2){				
 				//TODO:logica de mostrar listado y elegir cancion
 				System.out.println("put the name of the song");
 				nameSong = sc.next();
@@ -114,9 +143,7 @@ public class Runner {
 				seconds=sc.nextInt();
 				
 				Sco.EditSong(nameSong, yearRelease, genreSong, minutes, seconds);
-				Sco.showSong();
-				
-				
+				Sco.showSong();		
 			}else if(response1 == 3) {
 				Sco.delateSong();
 				Sco.showSong();
