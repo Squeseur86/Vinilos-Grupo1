@@ -16,6 +16,7 @@ public class Runner {
 		String username, tellphone, email, password, message;
 		String cover;
 		String description;
+		int purcharse=0;
 		int hours,minutes,seconds,year,month,date,n=0,response1;
 		String genre, genreSong;
 		System.out.println("Welcome to the vinyl store, regsister");
@@ -65,7 +66,8 @@ public class Runner {
 		System.out.println("2 edit album");
 		System.out.println("3 delete album");
 		System.out.println("4 comment album");
-		System.out.println("5. Continue");
+		System.out.println("5. set price for an album");
+		System.out.println("6. Continue");
 		response1=sc.nextInt();
 		if(response1==1) {
 			for(int i=0;i<n;i++) {
@@ -99,6 +101,15 @@ public class Runner {
 		a1.listAlbum(n-1);
 		message = sc.next();
 		cc.createMessage(message);	
+		}else if( response1 ==5){
+			for(int i=0;i<n;i++)
+			{
+				int price;
+				a1.listAlbum(i);
+				System.out.println("Set price");
+				price=sc.nextInt();
+				a1.setPrices(price, i);
+			}
 		}else {
 			System.out.println("Do you want to create a new song");
 			do {
@@ -148,7 +159,102 @@ public class Runner {
 				Sco.delateSong();
 				Sco.showSong();
 			}
+		}
+		System.out.println("Chosse the option");
+		System.out.println("1 Show the list album");
+		System.out.println("2 edit album");
+		System.out.println("3 delete album");
+		System.out.println("4 comment album");
+		System.out.println("5. Shop");
+		response1=sc.nextInt();
+		if(response1==1) {
+			for(int i=0;i<n;i++) {
+				System.out.println(" ");
+				a1.listAlbum(i);
 			}
-	
+		}else if(response1==2) {
+			System.out.println("which album do yo want to edit");
+			for(int i=0;i<n;i++) {
+				System.out.println(" ");
+				a1.listAlbum(i);
+			}
+			n=sc.nextInt();
+			a1.detailAlbum(sc,n-1);
+		}else if(response1==3){
+			System.out.println("which album do yo want to delete");
+			for(int i=0;i<n;i++) {
+				System.out.println(" ");
+				a1.listAlbum(i);
+			}
+			n=sc.nextInt();
+			a1.deleteAlbum(n-1);
+			a1.listAlbum(n-1);
+		}else if( response1 ==4){
+			System.out.println("which album do yo want to let a message");
+			for(int i=0;i<n;i++) {
+				System.out.println(" ");
+				a1.listAlbum(i);
+			}
+		n = sc.nextInt();
+		a1.listAlbum(n-1);
+		message = sc.next();
+		cc.createMessage(message);	
+		}else if(response1 == 5) {
+			System.out.println("verify your identity");
+			System.out.println("Insert your username");
+			username=sc.next();
+			System.out.println("Insert your password");
+			password=sc.next();
+			
+			if(cc.verifyCollector(username, password))
+			{
+				do 
+				{
+					cc.collectorMenuShop();
+					response1=sc.nextInt();
+					if(response1==1)
+					{
+						for(int i=0;i<n;i++) {
+							a1.listAlbum(i);
+						}
+						for(int i=0;i<n;i++) {
+							System.out.println("Album price"+i+1);
+							a1.getPrice(i);
+						}
+						Sco.showSong();
+						System.out.println("2.buy a album");
+						System.out.println("3.show cart");
+					}else if(response1==2) {
+						for(int i=0;i<n;i++) {
+							a1.listAlbum(i);
+						}
+						for(int i=0;i<n;i++) {
+							System.out.println("Album price"+i+1);
+							a1.getPrice(i);
+						}
+						System.out.println("Which album fo you want to buy");
+						response1=sc.nextInt();
+						purcharse=response1;
+						a1.purchasingAlbum(response1);
+					}else if(response1==3)
+					{
+						System.out.println(a1.purchasingAlbum(purcharse));
+					}if(response1==4)
+					{
+					 responseBool=true;
+					}else {
+						responseBool=false;
+					}
+				}while(responseBool);
+			}else if(cc.verifyCollector(username, password)) {
+				while(cc.verifyCollector(username, password)) {
+					System.out.println("verify your identity");
+					System.out.println("Insert your username");
+					username=sc.next();
+					System.out.println("Insert your password");
+					password=sc.next();
+				}
+			}
+		}
 	}
 }
