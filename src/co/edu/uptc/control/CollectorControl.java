@@ -11,8 +11,9 @@ public class CollectorControl {
 		cl.setEmail(email);
 		cl.setPassword(password);
 	}
-	public void createMessage(String message) {
+	public void createMessage(String message, int raiting) {
 		cl.setMessage(message);
+		cl.setRaiting(raiting);
 	}
 
 }

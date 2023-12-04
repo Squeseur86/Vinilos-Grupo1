@@ -6,6 +6,7 @@ public class Collector {
 	private String email;
 	private String password;
 	private String message;
+	private int raiting;
 	public String getUserName() {
 		return userName;
 	}
@@ -35,6 +36,12 @@ public class Collector {
 	}
 	public void setMessage(String message) {
 		this.message = message;
+	}
+	public int getRaiting() {
+		return raiting;
+	}
+	public void setRaiting(int raiting) {
+		this.raiting = raiting;
 	}
 	
 

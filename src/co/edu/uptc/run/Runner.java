@@ -61,18 +61,15 @@ public class Runner {
 			}
 		}
 		System.out.println("Chosse the option");
-		System.out.println("1 Show the list album");
-		System.out.println("2 edit album");
-		System.out.println("3 delete album");
-		System.out.println("4 comment album");
-		System.out.println("5. Continue");
+		System.out.println("1 edit album");
+		System.out.println("2 delete album");
+		System.out.println("3 continue album");
+		for(int i=0;i<n;i++) {
+			System.out.println(" ");
+			a1.listAlbum(i);
+		}
 		response1=sc.nextInt();
 		if(response1==1) {
-			for(int i=0;i<n;i++) {
-				System.out.println(" ");
-				a1.listAlbum(i);
-			}
-		}else if(response1==2) {
 			System.out.println("which album do yo want to edit");
 			for(int i=0;i<n;i++) {
 				System.out.println(" ");
@@ -80,7 +77,7 @@ public class Runner {
 			}
 			n=sc.nextInt();
 			a1.detailAlbum(sc,n-1);
-		}else if(response1==3){
+		}else if(response1==2) {
 			System.out.println("which album do yo want to delete");
 			for(int i=0;i<n;i++) {
 				System.out.println(" ");
@@ -89,6 +86,11 @@ public class Runner {
 			n=sc.nextInt();
 			a1.deleteAlbum(n-1);
 			a1.listAlbum(n-1);
+		}else if(response1==3){
+			System.out.println("1.Do you want to show the songs of the albm ");
+			System.out.println("2.Do you want to show the message of the album");
+
+
 		}else if( response1 ==4){
 			System.out.println("which album do yo want to let a message");
 			for(int i=0;i<n;i++) {
@@ -97,10 +99,15 @@ public class Runner {
 			}
 		n = sc.nextInt();
 		a1.listAlbum(n-1);
+		int raiting = sc.nextInt();
+		while(raiting<=0 && raiting > 5) {
+			System.out.println("This raiting is invalid");
+			raiting = sc.nextInt();
+		}
 		message = sc.next();
-		cc.createMessage(message);	
+		cc.createMessage(message, raiting);	
 		}else {
-			System.out.println("Do you want to create a new song");
+			
 			do {
 			System.out.println("write y or n");
 			option = sc.next();
