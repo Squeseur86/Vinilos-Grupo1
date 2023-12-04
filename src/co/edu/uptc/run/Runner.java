@@ -16,7 +16,7 @@ public class Runner {
 		String username, tellphone, email, password, message;
 		String cover;
 		String description;
-		int hours,minutes,seconds,year,month,date,n=0,response1;
+		int hours,minutes,seconds,year,month,date,n=0,response1,lengthSongs=0;
 		String genre, genreSong;
 		System.out.println("Welcome to the vinyl store, regsister");
 		System.out.println("enter your username");
@@ -110,27 +110,44 @@ public class Runner {
 				x= false;
 			}
 			}while(x == false);
-			System.out.println("put the name of the song");
-			nameSong = sc.next();
-			System.out.println("put the year relase of the song");
-			yearRelease = sc.next();
-			System.out.println("put the genre of the song");
-			genreSong = sc.next();
-			System.out.println("put the minutes of the song");
-			minutes=sc.nextInt();
-			System.out.println("put the seconds of the song");
-			seconds=sc.nextInt();
-			Sco.createSong(nameSong, yearRelease, genreSong, minutes, seconds);
-			Sco.showSong();
+			
+			System.out.println("How many songs do you want to create");
+			lengthSongs=sc.nextInt();
+			Sco.setArrayAlbum(lengthSongs);
+			
+			for(int i=0;i<lengthSongs;i++) {
+				System.out.println("put the name of the song");
+				nameSong = sc.next();
+				System.out.println("put the year relase of the song");
+				yearRelease = sc.next();
+				System.out.println("put the genre of the song");
+				genreSong = sc.next();
+				System.out.println("put the minutes of the song");
+				minutes=sc.nextInt();
+				System.out.println("put the seconds of the song");
+				seconds=sc.nextInt();
+				Sco.createSong(nameSong, yearRelease, genreSong, minutes, seconds,i);
+			}
 			System.out.println("Chosse the option");
 			System.out.println("1 Show the list song");
 			System.out.println("2 edit song");
 			System.out.println("3 delete song");
 			response1=sc.nextInt();
 			if(response1 == 1) {
-				
+				for(int i=0;i<lengthSongs;i++)
+				{
+					System.out.println("song "+(i+1));
+					Sco.listSongs(i);
+				}
 			}else if(response1 == 2){				
-				//TODO:logica de mostrar listado y elegir cancion
+				for(int i=0;i<lengthSongs;i++)
+				{
+					System.out.println("song "+(i+1));
+					Sco.listSongs(i);
+				}
+				System.out.println("Which song do you wanto to edit?");
+				response1=sc.nextInt();
+				
 				System.out.println("put the name of the song");
 				nameSong = sc.next();
 				System.out.println("put the year relase of the song");
@@ -142,11 +159,19 @@ public class Runner {
 				System.out.println("put the seconds of the song");
 				seconds=sc.nextInt();
 				
-				Sco.EditSong(nameSong, yearRelease, genreSong, minutes, seconds);
-				Sco.showSong();		
+				Sco.EditSong(nameSong, yearRelease, genreSong, minutes, seconds,response1);
+				Sco.listSongs(response1);		
 			}else if(response1 == 3) {
-				Sco.delateSong();
-				Sco.showSong();
+				for(int i=0;i<lengthSongs;i++)
+				{
+					System.out.println("song "+(i+1));
+					Sco.listSongs(i);
+				}
+				System.out.println("Which song do you wanto to edit?");
+				response1=sc.nextInt();
+				
+				Sco.delateSong(response1);
+				Sco.listSongs(response1);
 			}
 			}
 	
