@@ -11,13 +11,14 @@ public class Runner {
 		SongControl Sco = new SongControl();
 		CollectorControl cc = new CollectorControl();
 		String response, option;
-		boolean responseBool, x;
+		boolean responseBool, x = false;
 		String name, nameSong, yearRelease;
-		String username, tellphone, email, password, message;
+		String username, tellphone, email, password;
 		String cover;
 		String description;
-		int hours,minutes,seconds,year,month,date,n=0,response1,lengthSongs=0;
+		int hours,minutes,seconds,year,month,date,n=0,response1,lengthSongs=0 , opcC, comments = 0, opc = 0, m, raiting;
 		String genre, genreSong;
+		String raitcad, message;
 		System.out.println("Welcome to the vinyl store, regsister");
 		System.out.println("enter your username");
 		username = sc.next();
@@ -87,100 +88,75 @@ public class Runner {
 			a1.deleteAlbum(n-1);
 			a1.listAlbum(n-1);
 		}else if(response1==3){
+			while(x == false) {
 			System.out.println("1.Do you want to show the songs of the albm ");
 			System.out.println("2.Do you want to show the message of the album");
-
-
-		}else if( response1 ==4){
-			System.out.println("which album do yo want to let a message");
-			for(int i=0;i<n;i++) {
-				System.out.println(" ");
-				a1.listAlbum(i);
-			}
-		n = sc.nextInt();
-		a1.listAlbum(n-1);
-		int raiting = sc.nextInt();
-		while(raiting<=0 && raiting > 5) {
-			System.out.println("This raiting is invalid");
-			raiting = sc.nextInt();
-		}
-		message = sc.next();
-		cc.createMessage(message, raiting);	
-		}else {
-			
-			do {
-			System.out.println("write y or n");
-			option = sc.next();
-			if(option.equals("y")){
-				x= true;
+			System.out.println("3. reutrn albums");
+			opc = sc.nextInt();
+			if(opc == 1) {
+				for(int i=0;i<lengthSongs;i++){
+					System.out.println("song "+(i+1));
+					Sco.listSongs(i);
+				}
+				System.out.println("How many songs do you want to create");
+				lengthSongs=sc.nextInt();
+				Sco.setArrayAlbum(lengthSongs);
+				for(int i=0;i<lengthSongs;i++) {
+					Sco.detailSong(sc, i);
+				}
+				System.out.println("Chosse the option");
+				System.out.println("1 edit song");
+				System.out.println("2 delete song");
+				response1=sc.nextInt();
+				if(response1 == 1) {		
+					for(int i=0;i<lengthSongs;i++){
+					System.out.println("song "+(i+1));
+					Sco.listSongs(i);
+				}
+					Sco.detailSong(sc, response1);
+					Sco.listSongs(response1);	
+					
+				}else if(response1 == 2){
+					for(int i=0;i<lengthSongs;i++)
+					{
+						System.out.println("song "+(i+1));
+						Sco.listSongs(i);
+					}
+					System.out.println("Which song do you wanto to edit?");
+					response1=sc.nextInt();
+					
+					Sco.delateSong(response1);
+					Sco.listSongs(response1);
+				}
+				
+			}else if(opc ==2 ) {
+				n = n +1;
+				cc.detailmesage(sc, n);
+				for(int i=0;i<comments;i++){
+					System.out.println("message "+(i+1));
+					cc.setArrayMessage(i);
+					cc.listMessgae(i);
+				}
+				cc.detailmesage(sc, n);
+								
 			}else {
-				x= false;
+				x = true;
 			}
-			}while(x == false);
+			}
+		}else {
+		}
 			
-			System.out.println("How many songs do you want to create");
-			lengthSongs=sc.nextInt();
-			Sco.setArrayAlbum(lengthSongs);
 			
-			for(int i=0;i<lengthSongs;i++) {
-				System.out.println("put the name of the song");
-				nameSong = sc.next();
-				System.out.println("put the year relase of the song");
-				yearRelease = sc.next();
-				System.out.println("put the genre of the song");
-				genreSong = sc.next();
-				System.out.println("put the minutes of the song");
-				minutes=sc.nextInt();
-				System.out.println("put the seconds of the song");
-				seconds=sc.nextInt();
-				Sco.createSong(nameSong, yearRelease, genreSong, minutes, seconds,i);
-			}
-			System.out.println("Chosse the option");
-			System.out.println("1 Show the list song");
-			System.out.println("2 edit song");
-			System.out.println("3 delete song");
-			response1=sc.nextInt();
-			if(response1 == 1) {
-				for(int i=0;i<lengthSongs;i++)
-				{
-					System.out.println("song "+(i+1));
-					Sco.listSongs(i);
-				}
-			}else if(response1 == 2){				
-				for(int i=0;i<lengthSongs;i++)
-				{
-					System.out.println("song "+(i+1));
-					Sco.listSongs(i);
-				}
-				System.out.println("Which song do you wanto to edit?");
-				response1=sc.nextInt();
+			
+			
+	
+	
+
 				
-				System.out.println("put the name of the song");
-				nameSong = sc.next();
-				System.out.println("put the year relase of the song");
-				yearRelease = sc.next();
-				System.out.println("put the genre of the song");
-				genreSong = sc.next();
-				System.out.println("put the minutes of the song");
-				minutes=sc.nextInt();
-				System.out.println("put the seconds of the song");
-				seconds=sc.nextInt();
-				
-				Sco.EditSong(nameSong, yearRelease, genreSong, minutes, seconds,response1);
-				Sco.listSongs(response1);		
-			}else if(response1 == 3) {
-				for(int i=0;i<lengthSongs;i++)
-				{
-					System.out.println("song "+(i+1));
-					Sco.listSongs(i);
-				}
-				System.out.println("Which song do you wanto to edit?");
-				response1=sc.nextInt();
-				
-				Sco.delateSong(response1);
-				Sco.listSongs(response1);
-			}
+	
+
+			
 			}
 	
 	}
-}
+

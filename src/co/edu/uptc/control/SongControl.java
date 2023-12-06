@@ -1,6 +1,7 @@
 package co.edu.uptc.control;
 
 import java.time.Duration;
+import java.util.Scanner;
 
 import co.edu.uptc.model.Song;
 
@@ -28,13 +29,25 @@ public class SongControl {
 		System.out.println("Genre song: "+ sg.getGenreSong(n));
 		System.out.println("Record Label: "+ sg.getRecordSong(n));	
 	}
-	public void EditSong(String nameSong,String yearRelease,String genreSong,int minutes,int seconds,int n)
-	{
+	public void EditSong(String nameSong,String yearRelease,String genreSong,int minutes,int seconds,int n){
 		sg.setNameSong(nameSong,n);
 		sg.setYearRelease(yearRelease,n);
 		sg.setGenreSong(genreSong,n);
 		sg.setRecordSong(minutes, seconds,n);
 		
+	}
+	public void detailSong(Scanner sc, int n) {
+		System.out.println("put the name of the song");
+		String nameSong = sc.next();
+		System.out.println("put the year relase of the song");
+		String yearRelease = sc.next();
+		System.out.println("put the genre of the song");
+		String genreSong = sc.next();
+		System.out.println("put the minutes of the song");
+		int minutes=sc.nextInt();
+		System.out.println("put the seconds of the song");
+		int seconds=sc.nextInt();
+		createSong(nameSong, yearRelease, genreSong, minutes, seconds,n);
 	}
 	
 }

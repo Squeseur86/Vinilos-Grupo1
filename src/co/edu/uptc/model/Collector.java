@@ -1,12 +1,14 @@
 package co.edu.uptc.model;
 
+import java.time.Duration;
+
 public class Collector {
 	private String userName;
 	private String numTellphone;
 	private String email;
 	private String password;
-	private String message;
-	private int raiting;
+	private String message[];
+	private String raiting[];
 	public String getUserName() {
 		return userName;
 	}
@@ -31,17 +33,22 @@ public class Collector {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getMessage() {
-		return message;
+	public String getMessage(int m) {
+		return message[m];
 	}
-	public void setMessage(String message) {
-		this.message = message;
+	public void setMessage(String message, int m) {
+		this.message[m] = message;
 	}
-	public int getRaiting() {
-		return raiting;
+
+	public String getRaiting(int m) {
+		return raiting[m];
 	}
-	public void setRaiting(int raiting) {
-		this.raiting = raiting;
+	public void setRaiting(String raiting, int m) {
+		this.raiting[m] = raiting;
+	}
+	public void setArrays(int nAl) {
+		message = new String[nAl];
+		raiting = new String[nAl];
 	}
 	
 
