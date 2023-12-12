@@ -10,6 +10,7 @@ public class Album {
 	private String description[];
 	private Calendar[] releaseDate;
 	private String genre[];
+	private int price[];
 	private Duration recordLabel[];
 	public String getName(int n) {
 		return name[n];
@@ -56,8 +57,15 @@ public class Album {
 		releaseDate= new Calendar[nAl];
 		genre = new String[nAl];
 		recordLabel=new Duration[nAl];
+		price = new int[nAl];
 	}
 	public void restartDate(int n) {
 		releaseDate[n].clear();;
+	}
+	public int getPrice(int n) {
+		return price[n];
+	}
+	public void setPrice( int price,int n) {
+		this.price[n] = price;
 	}
 }

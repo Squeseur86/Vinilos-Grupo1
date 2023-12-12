@@ -2,6 +2,7 @@ package co.edu.uptc.control;
 
 import java.util.Scanner;
 
+
 import co.edu.uptc.model.Album;
 
 public class AlbumControl {
@@ -63,5 +64,22 @@ public class AlbumControl {
 		a1.restartDate(n);
 		a1.setGenre("",n);
 		a1.setRecordLabel(0,0,0,n);	
+	}
+	public void setPrices(int price,int n) {
+		a1.setPrice(price, n);
+	}
+	public void getPrice(int n) {
+		a1.getPrice(n);
+	}
+	public String purchasingAlbum(int response)
+	{
+		if(a1.getPrice(response-1)==0)
+		{
+			return null;
+		}else {
+			System.out.println("Album purchased");
+			return a1.getName(response-1);
+		}
+
 	}
 }
