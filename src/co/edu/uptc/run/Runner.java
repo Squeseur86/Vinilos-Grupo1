@@ -19,10 +19,10 @@ public class Runner {
 		String cover;
 		int purcharse=0,lengthAlbum=0,contSong=0;
 		String description;
-		int hours,minutes,seconds,year,month,date,n=0,response1, opcC, comments = 0, opc = 0, id, raiting;
+		int hours,minutes,seconds,year,month,date,n=0,response1, opcC, comments = 0, opc = 0, id, raiting, opcedit=1;
 		String genre, genreSong;
 		String raitcad, message;
-		
+		while(opcedit ==1 ) {
 		System.out.println("Welcome to the vinyl store, regsister");
 		System.out.println("enter your username");
 		username = sc.next();
@@ -40,7 +40,10 @@ public class Runner {
 			System.out.println("this password is invalid");
 			password = sc.next();
 		}
+		System.out.println("Do you want edit your information 1 yes");
+		opcedit = sc.nextInt();
 		cc.registCollector(username, tellphone, email, password);
+		}
 		cc.setArrayMessage(100);
 		a1.setArrayAlbum(100);
 		Sco.setArrayAlbum(100);
