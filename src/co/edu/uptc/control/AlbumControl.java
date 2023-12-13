@@ -73,16 +73,26 @@ public class AlbumControl {
 	}
 	public String purchasingAlbum(int response)
 	{
+<<<<<<< HEAD
 		if(a1.getPrice(response-1)==0)
+=======
+		if(a1.getPrice(response)==0)
+>>>>>>> 1f1637cb774a81133069be5eae541f09c0e62463
 		{
 			return null;
 		}else {
 			System.out.println("Album purchased");
+<<<<<<< HEAD
 			return a1.getName(response-1);
 		}
 	}
 	public void listAlbNames(int n)
 	{
 		System.out.println((n+1)+" "+a1.getName(n));
+=======
+			return a1.getName(response);
+		}
+		
+>>>>>>> 1f1637cb774a81133069be5eae541f09c0e62463
 	}
 }

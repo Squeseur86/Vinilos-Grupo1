@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import co.edu.uptc.model.Collector;
 
+
 public class CollectorControl {
 	private int comments = 0;
 	static Collector cl = new Collector();
@@ -18,6 +19,7 @@ public class CollectorControl {
 		cl.setMessage(message, m);
 		cl.setRaiting(raiting,m);
 	}
+<<<<<<< HEAD
 	public void setArrayMessage(int m) {
 		cl.setArrays(m);
 	}
@@ -52,6 +54,8 @@ public class CollectorControl {
 			System.out.println("raiting:"+ cl.getRaiting(n));
 		
 	}
+=======
+>>>>>>> 1f1637cb774a81133069be5eae541f09c0e62463
 	public void collectorMenuShop() {
 		System.out.println("1.show albums");
 		System.out.println("2.buy a album");
@@ -61,10 +65,20 @@ public class CollectorControl {
 	public boolean verifyCollector(String userName,String password) {
 		if(userName.equals(cl.getUserName())&&password.equals(cl.getPassword())) {
 			System.out.println("Hi there "+userName);
+<<<<<<< HEAD
 			return false;
 		}else {
 			System.out.println("fail try again");
 			return true;
 		}
 	}
+=======
+			return true;
+		}else {
+			System.out.println("fail try again");
+			return false;
+		}
+	}
+	
+>>>>>>> 1f1637cb774a81133069be5eae541f09c0e62463
 }

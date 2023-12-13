@@ -12,6 +12,7 @@ public class Album {
 	private String genre[];
 	private int price[];
 	private Duration recordLabel[];
+	private int price[];
 	public String getName(int n) {
 		return name[n];
 	}
@@ -68,4 +69,8 @@ public class Album {
 	public void setPrice( int price,int n) {
 		this.price[n] = price;
 	}
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 1f1637cb774a81133069be5eae541f09c0e62463
 }
