@@ -31,15 +31,7 @@ public class PerformerControl {
 		String descrArt = sc.next();
 		createPerformer(nameArt, imageArt, descrArt, n);
 	}
-<<<<<<< HEAD
-	public void listArtist(int n) {
-		System.out.println("namArtist : "+ pr.getImageArtist(n));
-		System.out.println("image : " + pr.getImageArtist(n));
-		System.out.println("description artist : "+ pr.getDescriptionArtist(n));
-	}
-	public void setArrayArtist(int n) {
-		pr.setArrays(n);
-=======
+
 	public void deletePerformer(int n)
 	{
 	 pr.setNameArtist(null, n);
@@ -54,6 +46,5 @@ public class PerformerControl {
 			System.out.println(pr.getImageArtist(n));
 			System.out.println(pr.getDescriptionArtist(n));
 		}
->>>>>>> d4966395e3dff2deead45b80c0e3488dfa577d3a
 	}
 }
