@@ -32,5 +32,13 @@ public class MusicianControl extends PerformerControl{
 		musc.setBirthDate(0, 0, 0, n);
 	}
 	
+	public void listPerformer(int n,int id)
+	{
+		if(id==pr.getId(n))
+		{
+			super.listPerformer(n, id);
+			System.out.println(musc.getBirthDate(n));
+		}
+	}
 
 }
