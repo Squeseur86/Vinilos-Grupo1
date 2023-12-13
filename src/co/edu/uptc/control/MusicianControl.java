@@ -14,7 +14,10 @@ public class MusicianControl extends PerformerControl{
 	public void createMusican(int year,int month,int day,int n) {
 		musc.setBirthDate(year, month, day, n);
 	}
-	public void detailBand(Scanner sc,int artistLength, int n,int id) {
+	public void setArrayMusican(int n) {
+		musc.setArray(n);
+	}
+	public void detailMusician(Scanner sc,int artistLength, int n,int id) {
 		for(int i =0; i<artistLength; i++ ) {
 			super.listPerformer(i, id);
 		}
@@ -31,8 +34,11 @@ public class MusicianControl extends PerformerControl{
 		super.deletePerformer(n);
 		musc.setBirthDate(0, 0, 0, n);
 	}
-	
-	public void listPerformer(int n,int id)
+	public void setId(int n,int id)
+	{
+		musc.setId(n, id);
+	}
+	public void listMusician(int n,int id)
 	{
 		if(id==pr.getId(n))
 		{
