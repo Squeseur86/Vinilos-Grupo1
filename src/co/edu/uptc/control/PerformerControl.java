@@ -14,6 +14,14 @@ public class PerformerControl {
 		pr.setDescriptionArtist(descriptionArtist, n);
 		
 	}
+	public void setArraysPerfor(int n)
+	{
+		pr.setArraysPerf(n);
+	}
+	public void setIdPerformer(int id,int n)
+	{
+		pr.setId(id, n);
+	}
 	public static void detailPerformer(Scanner sc, int n) {
 		System.out.println("put the name of the Artist");
 		String nameArt = sc.next();
@@ -22,5 +30,20 @@ public class PerformerControl {
 		System.out.println("Put the description of the artist");
 		String descrArt = sc.next();
 		createPerformer(nameArt, imageArt, descrArt, n);
+	}
+	public void deletePerformer(int n)
+	{
+	 pr.setNameArtist(null, n);
+	 pr.setImageArtist(null, n);
+	 pr.setDescriptionArtist(null, n);
+	}
+	public void listPerformer(int n,int id)
+	{
+		if(id==pr.getId(n))
+		{
+			System.out.println(pr.getNameArtist(n));
+			System.out.println(pr.getImageArtist(n));
+			System.out.println(pr.getDescriptionArtist(n));
+		}
 	}
 }

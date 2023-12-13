@@ -1,27 +1,41 @@
 package co.edu.uptc.model;
 
 public class Performer {
-	String nameArtist;
-	String imageArtist;
-	String descriptionArtist;
-	public String getNameArtist() {
-		return nameArtist;
+	String nameArtist[];
+	String imageArtist[];
+	String descriptionArtist[];
+	int id[];
+	public String getNameArtist(int n) {
+		return nameArtist[n];
 	}
-	public void setNameArtist(String nameArtist) {
-		this.nameArtist = nameArtist;
+	public void setNameArtist(String nameArtist,int n) {
+		this.nameArtist[n] = nameArtist;
 	}
-	public String getImageArtist() {
-		return imageArtist;
+	public String getImageArtist(int n) {
+		return imageArtist[n];
 	}
-	public void setImageArtist(String imageArtist) {
-		this.imageArtist = imageArtist;
+	public void setImageArtist(String imageArtist,int n) {
+		this.imageArtist[n] = imageArtist;
 	}
-	public String getDescriptionArtist() {
-		return descriptionArtist;
+	public String getDescriptionArtist(int n) {
+		return descriptionArtist[n];
 	}
-	public void setDescriptionArtist(String descriptionArtist) {
-		this.descriptionArtist = descriptionArtist;
+	public void setDescriptionArtist(String descriptionArtist,int n) {
+		this.descriptionArtist[n] = descriptionArtist;
 	}
 	
+	public int getId(int n) {
+		return id[n];
+	}
+	public void setId(int id,int n) {
+		this.id[n] = id;
+	}
+	public void setArraysPerf(int n)
+	{
+		nameArtist=new String[n];
+		imageArtist= new String[n];
+		descriptionArtist= new String[n];
+		id=new int[n];
+	}
 	
 }
