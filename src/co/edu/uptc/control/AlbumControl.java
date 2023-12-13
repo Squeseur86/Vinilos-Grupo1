@@ -6,12 +6,12 @@ import java.util.Scanner;
 import co.edu.uptc.model.Album;
 
 public class AlbumControl {
+	
 	static Album a1 = new Album();
 	static CollectorControl cc = new CollectorControl();
 	
 	public AlbumControl(){
 		a1=new Album();
-		
 	}
 	 
 	public static void createAlbum(String name,String cover,String description,int year,int month,int date,String genre,int hours,int minutes,int seconds,int n) {
@@ -80,6 +80,9 @@ public class AlbumControl {
 			System.out.println("Album purchased");
 			return a1.getName(response-1);
 		}
-
+	}
+	public void listAlbNames(int n)
+	{
+		System.out.println((n+1)+" "+a1.getName(n));
 	}
 }
