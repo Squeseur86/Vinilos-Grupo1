@@ -50,6 +50,7 @@ public class Collector {
 		message = new String[nAl];
 		raiting = new String[nAl];
 	}
+
 	
 
 }

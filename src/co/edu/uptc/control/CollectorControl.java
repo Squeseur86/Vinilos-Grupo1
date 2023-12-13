@@ -14,7 +14,7 @@ public class CollectorControl {
 		cl.setPassword(password);
 	}
 	public void createMessage(String message, String raiting, int m) {
-		cl.setMessage(message,m);
+		cl.setMessage(message, m);
 		cl.setRaiting(raiting,m);
 	}
 	public void setArrayMessage(int m) {
