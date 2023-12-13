@@ -113,6 +113,7 @@ public class Runner {
 					System.out.println("Choose the option");
 					System.out.println("1 edit song");
 					System.out.println("2 delete song");
+					System.out.println("3 take out song");
 					option=sc.next();
 					
 					switch(option)
@@ -144,11 +145,32 @@ public class Runner {
 							{
 								Sco.listSongs(i,(id-1));
 							}
-							System.out.println("Which song do you wanto to delete?");
+							System.out.println("Which song do you want to delete?");
 							response1=sc.nextInt();
 							
 							Sco.delateSong(response1);
 							Sco.listSongs(response1,id);
+							break;
+						case "3":
+							System.out.println("Which album do you want to take out song");
+							for(int i=0;i<lengthAlbum;i++)
+							{
+								a1.listAlbNames(i);
+							}
+							id=sc.nextInt();
+							for(int i=0;i<contSong;i++)
+							{
+								Sco.listSongs(i,(id-1));
+							}
+							System.out.println("Which song do you want to take out?");
+							response1=sc.nextInt();
+							System.out.println("Which album do you want to put the song");
+							for(int i=0;i<lengthAlbum;i++)
+							{
+								a1.listAlbNames(i);
+							}
+							id=sc.nextInt();
+							Sco.setId((response1-1), id);
 							break;
 					}
 					break;
@@ -236,6 +258,9 @@ public class Runner {
 					break;
 				case "8":
 					exit=false;
+					break;
+				default:
+					System.out.println("opcion invalida");
 					break;
 			}
 			
