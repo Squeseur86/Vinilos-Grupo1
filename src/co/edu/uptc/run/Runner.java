@@ -45,7 +45,7 @@ public class Runner {
 			System.out.println("this password is invalid");
 			password = sc.next();
 		}
-		System.out.println("Do you want edit your information 1 yes");
+		System.out.println("Do you want edit your information 1 yes,2.no");
 		opcedit = sc.nextInt();
 		cc.registCollector(username, tellphone, email, password);
 		}
@@ -60,7 +60,7 @@ public class Runner {
 		while(opcArtit==1) {
 		System.out.println("Who is yout favorite artist");
 		favArtist = sc.next();
-		System.out.println("you are sure? 1.no");
+		System.out.println("you are sure? 1.no 2.yes");
 		opcArtit =sc.nextInt();		
 		}
 		while(exit)
@@ -497,6 +497,15 @@ public class Runner {
 					{
 						Sco.listSongs(i, (id-1));
 					}
+					System.out.println("which performer do you want to see");
+					for(int i=0;i<contPerf;i++)
+					{
+						perfC.listPerformer(i, id);
+					}
+					response1=sc.nextInt();
+					bdC.listBand(response1, id);
+					msC.listMusician(response1, id);
+					przC.listPrizes(response1, id);
 					break;
 				case "8":
 					exit=false;
@@ -507,7 +516,6 @@ public class Runner {
 			}
 			
 		}
-
 	}
 	public static void showMenu()
 	{
@@ -519,14 +527,5 @@ public class Runner {
 		System.out.println("6 comment album");
 		System.out.println("7 list album");
 		System.out.println("8 exit");
-		System.out.println("Chosse the option");
-		System.out.println("1 Show the list album");
-		System.out.println("2 edit album");
-		System.out.println("3 delete album");
-		System.out.println("4 comment album");
-		System.out.println("5. set price for an album");
-		System.out.println("6. Continue");
-
 	}
 }
-

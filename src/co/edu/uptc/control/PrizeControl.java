@@ -35,6 +35,21 @@ public class PrizeControl {
 	public void setArrayAlbum(int n) {
 		prz.setArrays(n);
 	}
+	public void setId(int id,int n) {
+		prz.setId(id, n);
+		
+	}
+	public void listPrizes(int n,int id)
+	{
+		if(id==prz.getId(n))
+		{
+			System.out.println(prz.getOrganization(n));
+			System.out.println(prz.getName(n));
+			System.out.println(prz.getDescription(n));
+			System.out.println(prz.getPremiationDate(n));
+			
+		}
+	}
 	public void setPricedate(Scanner sc,int n) {
 		int year=sc.nextInt();
 		System.out.println("put the month(1-12) that was recive the price");

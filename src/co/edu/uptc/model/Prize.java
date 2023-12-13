@@ -8,6 +8,7 @@ public class Prize {
 	private String name[];
 	private String description[];
 	private Calendar premiationDate[];
+	private int id[];
 	
 	public String getOrganization(int n) {
 		return organization[n];
@@ -36,12 +37,20 @@ public class Prize {
 		this.premiationDate[n].set(year, month, day);
 		this.premiationDate[n].set(Calendar.MILLISECOND, 0);
 	}
+	
+	public int getId(int n) {
+		return id[n];
+	}
+	public void setId(int id,int n) {
+		this.id[n] = id;
+	}
 	public void setArrays(int n)
 	{
 		organization=new String[n];
 		name=new String[n];
 		description=new String[n];
 		premiationDate=new Calendar[n];
+		id= new int[n];
 	}
 	
 }
