@@ -9,6 +9,7 @@ public class Song {
 	private String yearRelease[];
 	private String genreSong[];
 	private Duration recordSong[];
+	private int id[];
 	public String getNameSong(int n) {
 		return nameSong[n];
 	}
@@ -33,10 +34,18 @@ public class Song {
 	public void setRecordSong(int minutes, int seconds,int n) {
 		recordSong[n] = Duration.ofMinutes(minutes).plusSeconds(seconds);
 	}
+	
+	public int getId(int n) {
+		return id[n];
+	}
+	public void setId(int id,int n) {
+		this.id[n] = id;
+	}
 	public void setArrays(int nAl) {
 		nameSong= new String[nAl];
 		genreSong= new String[nAl];
 		yearRelease = new String[nAl];
 		recordSong=new Duration[nAl];
+		id = new int[nAl];
 	}
 }

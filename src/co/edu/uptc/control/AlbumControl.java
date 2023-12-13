@@ -2,15 +2,16 @@ package co.edu.uptc.control;
 
 import java.util.Scanner;
 
+
 import co.edu.uptc.model.Album;
 
 public class AlbumControl {
+	
 	static Album a1 = new Album();
 	static CollectorControl cc = new CollectorControl();
 	
 	public AlbumControl(){
 		a1=new Album();
-		
 	}
 	 
 	public static void createAlbum(String name,String cover,String description,int year,int month,int date,String genre,int hours,int minutes,int seconds,int n) {
@@ -63,5 +64,25 @@ public class AlbumControl {
 		a1.restartDate(n);
 		a1.setGenre("",n);
 		a1.setRecordLabel(0,0,0,n);	
+	}
+	public void setPrices(int price,int n) {
+		a1.setPrice(price, n);
+	}
+	public void getPrice(int n) {
+		a1.getPrice(n);
+	}
+	public String purchasingAlbum(int response)
+	{
+		if(a1.getPrice(response-1)==0)
+		{
+			return null;
+		}else {
+			System.out.println("Album purchased");
+			return a1.getName(response-1);
+		}
+	}
+	public void listAlbNames(int n)
+	{
+		System.out.println((n+1)+" "+a1.getName(n));
 	}
 }

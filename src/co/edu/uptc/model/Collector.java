@@ -46,9 +46,10 @@ public class Collector {
 	public void setRaiting(String raiting, int m) {
 		this.raiting[m] = raiting;
 	}
-	public void setArrays(int nAl) {
-		message = new String[nAl];
-		raiting = new String[nAl];
+	public void setArrays(int n)
+	{
+		message= new String[n];
+		raiting = new String[n];
 	}
 
 	
