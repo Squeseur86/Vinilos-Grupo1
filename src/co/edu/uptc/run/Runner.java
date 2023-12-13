@@ -34,7 +34,7 @@ public class Runner {
 		System.out.println("enter your number tellphone ten digits");
 		tellphone = sc.next();
 		while(tellphone.length()!=10) {
-			System.out.println("this number tellphone is invalid");
+			System.out.println("this number tellphone is invalid- tellphone needs 10 charts");
 			tellphone = sc.next();
 		}
 		System.out.println("enter your email ....@gmail.com");
@@ -42,7 +42,7 @@ public class Runner {
 		System.out.println("enter your password 8 charts");
 		password = sc.next();
 		while(password.length()<8) {
-			System.out.println("this password is invalid");
+			System.out.println("this password is invalid- this password needs 8 charts");
 			password = sc.next();
 		}
 		System.out.println("Do you want edit your information 1 yes,2.no");
@@ -60,7 +60,7 @@ public class Runner {
 		while(opcArtit==1) {
 		System.out.println("Who is yout favorite artist");
 		favArtist = sc.next();
-		System.out.println("you are sure? 1.no 2.yes");
+		System.out.println("you are sure? 1.no, other number for not");
 		opcArtit =sc.nextInt();		
 		}
 		while(exit)
@@ -165,7 +165,7 @@ public class Runner {
 							while(opc01 == 1) {
 								System.out.println("1.band");
 								System.out.println("2. musician");
-								System.out.println("3. musician");
+								System.out.println("3. prize");
 								option = sc.next();
 								switch(option) {
 								case "1" :
