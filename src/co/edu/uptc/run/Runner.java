@@ -20,10 +20,11 @@ public class Runner {
 		String cover;
 		int purcharse=0,lengthAlbum=0,contSong=0,contPerf=0;
 		String description;
-		int hours,minutes,seconds,year,month,date,n=0,response1, opcC, comments = 0, opc = 0, id, raiting;
+		int hours,minutes,seconds,year,month,date,n=0,response1, opcC, comments = 0, opc = 0, id, raiting, opcedit=1;
 		String genre, genreSong;
-		String raitcad, message;
-		
+		String raitcad, message, favArtist;
+		int opcArtit=1;
+		while(opcedit ==1 ) {
 		System.out.println("Welcome to the vinyl store, regsister");
 		System.out.println("enter your username");
 		username = sc.next();
@@ -41,12 +42,21 @@ public class Runner {
 			System.out.println("this password is invalid");
 			password = sc.next();
 		}
+		System.out.println("Do you want edit your information 1 yes");
+		opcedit = sc.nextInt();
 		cc.registCollector(username, tellphone, email, password);
+		}
 		cc.setArrayMessage(100);
 		a1.setArrayAlbum(100);
 		Sco.setArrayAlbum(100);
 		perfC.setArraysPerfor(100);
 		
+		while(opcArtit==1) {
+		System.out.println("Who is yout favorite artist");
+		favArtist = sc.next();
+		System.out.println("you are sure? 1.no");
+		opcArtit =sc.nextInt();		
+		}
 		while(exit)
 		{
 			showMenu();
@@ -68,6 +78,7 @@ public class Runner {
 					System.out.println("3 set price for an album");
 					System.out.println("4 set performes to album");
 					System.out.println("5 delete performe");
+					System.out.println("6 edit performe");
 					option=sc.next();
 					switch(option)
 					{
@@ -112,7 +123,7 @@ public class Runner {
 							contPerf++;
 							break;
 						case "5":
-							System.out.println("Which album do you want to add performer");
+							System.out.println("Which album do you want to delete performer");
 							for(int i=0;i<lengthAlbum;i++)
 							{
 								a1.listAlbNames(i);
@@ -122,11 +133,26 @@ public class Runner {
 							{
 								perfC.listPerformer(i, id);
 							}
-							System.out.println("Which perfotmr do you want to delete ");
+							System.out.println("Which perfotmer do you want to delete ");
 							response1=sc.nextInt();
 							perfC.deletePerformer(response1);
 							perfC.listPerformer(response1, id);
 							break;
+						case "6":
+							System.out.println("Which album do you want to edit performer");
+							for(int i=0;i<lengthAlbum;i++)
+							{
+								a1.listAlbNames(i);
+							}
+							id=sc.nextInt();
+							for(int i=0;i<contPerf;i++)
+							{
+								perfC.listPerformer(i, id);
+							}
+							System.out.println("Which perfotmr do you want to edit ");
+							response1=sc.nextInt();
+							perfC.detailPerformer(sc, response1);
+							perfC.listPerformer(response1, id);
 					}
 					break;
 				case "3":
