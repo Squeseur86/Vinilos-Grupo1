@@ -10,6 +10,7 @@ public class Runner {
 		AlbumControl a1 = new AlbumControl();
 		SongControl Sco = new SongControl();
 		PerformerControl perfC=new PerformerControl();
+		BandControl bdC = new BandControl();
 		
 		CollectorControl cc = new CollectorControl();
 		String response;
@@ -50,6 +51,8 @@ public class Runner {
 		a1.setArrayAlbum(100);
 		Sco.setArrayAlbum(100);
 		perfC.setArraysPerfor(100);
+		bdC.setArrayBand(100);
+		
 		
 		while(opcArtit==1) {
 		System.out.println("Who is yout favorite artist");
@@ -79,6 +82,7 @@ public class Runner {
 					System.out.println("4 set performes to album");
 					System.out.println("5 delete performe");
 					System.out.println("6 edit performe");
+			
 					option=sc.next();
 					switch(option)
 					{
@@ -153,6 +157,37 @@ public class Runner {
 							response1=sc.nextInt();
 							perfC.detailPerformer(sc, response1);
 							perfC.listPerformer(response1, id);
+							System.out.println("The perform is a band or musician , 1. yes");
+							int opc01 = sc.nextInt();
+							while(opc01 == 1) {
+								System.out.println("1.band");
+								System.out.println("2. musician");
+								option = sc.next();
+								switch(option) {
+								case "1" :
+									System.out.println("Choose the option");
+									System.out.println("1 edit band");
+									System.out.println("2 delete band");
+									option = sc.next();
+									switch(option) {
+									case "1" :
+										System.out.println("Which band do you want to edit ");
+										response1=sc.nextInt();
+										bdC.detailBand(sc, response1);
+										bdC.listBand(response1);
+										break;
+									case "2" :
+										System.out.println("Which perfotmer do you want to delete ");
+										response1=sc.nextInt();
+										bdC.deleteBand(response1);
+										bdC.listBand(response1);
+										break;
+									}
+									break;
+								case "2" :
+									break;
+								}
+							}
 					}
 					break;
 				case "3":
