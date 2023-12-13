@@ -11,8 +11,9 @@ public class BandControl extends PerformerControl {
 		bd.setCreationDate(year, month, day, n);
 	}
 	public void detailBand(Scanner sc, int n) {
-		int opc = sc.nextInt();
 		String nameArt = sc.next();
+		System.out.println("put the number of the member of the band");
+		int opc = sc.nextInt();
 		for(int i =0; i<opc; i++ ) {
 			System.out.println("put the name of the Artists");
 			nameArt = sc.next();
@@ -29,9 +30,16 @@ public class BandControl extends PerformerControl {
 		int date=sc.nextInt();
 		createBand(nameArt, imageArt, descrArt, year, month, date, n);
 	}
+	public void setArrayBand(int n){
+		bd.setArrays(n);
+	}
 	public void deleteBand(int n) {
 		super.deletePerformer(n);
 		bd.setCreationDate(0, 0, 0, n);
+	}
+	public void listBand(int n) {
+		super.listPerformer(n, n);
+		System.out.println(bd.getCreationDate(n));
 	}
 	
 

@@ -34,6 +34,17 @@ public class Performer {
 		
 	}
 	
+	
+	public Performer(String[] nameArtist, String[] imageArtist, String[] descriptionArtist, int[] id) {
+		super();
+		this.nameArtist = nameArtist;
+		this.imageArtist = imageArtist;
+		this.descriptionArtist = descriptionArtist;
+		this.id = id;
+	}
+	public Performer() {
+		// TODO Auto-generated constructor stub
+	}
 	public int getId(int n) {
 		return id[n];
 	}
