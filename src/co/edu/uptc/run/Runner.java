@@ -21,7 +21,8 @@ public class Runner {
 		String description;
 		int hours,minutes,seconds,year,month,date,n=0,response1, opcC, comments = 0, opc = 0, id, raiting, opcedit=1;
 		String genre, genreSong;
-		String raitcad, message;
+		String raitcad, message, favArtist;
+		int opcArtit=1;
 		while(opcedit ==1 ) {
 		System.out.println("Welcome to the vinyl store, regsister");
 		System.out.println("enter your username");
@@ -47,7 +48,12 @@ public class Runner {
 		cc.setArrayMessage(100);
 		a1.setArrayAlbum(100);
 		Sco.setArrayAlbum(100);
-		
+		while(opcArtit==1) {
+		System.out.println("Who is yout favorite artist");
+		favArtist = sc.next();
+		System.out.println("you are sure? 1.no");
+		opcArtit =sc.nextInt();		
+		}
 		while(exit)
 		{
 			showMenu();
