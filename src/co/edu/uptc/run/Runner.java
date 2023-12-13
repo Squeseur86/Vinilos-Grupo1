@@ -289,8 +289,9 @@ public class Runner {
 									break;
 								case "3":
 									System.out.println("Choose the option");
-									System.out.println("1 edit price");
-									System.out.println("2 update price date");
+									System.out.println("1 edit prize");
+									System.out.println("2 update prize date");
+									System.out.println("3. detail artist");
 									option=sc.next();
 									switch(option) {
 										case "1" :
@@ -323,6 +324,15 @@ public class Runner {
 											response1=sc.nextInt();
 											przC.setPricedate(sc, response1);
 										
+											break;
+										case "3" :
+											for(int i=0;i<contPerf;i++)	{
+												perfC.listPerformer(i, (id-1));
+											}
+											System.out.println("Which perfomre do you want to win prize ");
+											response1 = sc.nextInt();
+											przC.detailPrize(sc, response1+10);
+											
 											break;
 									}
 									break;
