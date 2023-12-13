@@ -4,15 +4,19 @@ public class Performer {
 	String nameArtist[];
 	String imageArtist[];
 	String descriptionArtist[];
+
+	int id[];
 	public String getNameArtist(int n) {
 		return nameArtist[n];
 	}
 	public void setNameArtist(String nameArtist, int n) {
+
 		this.nameArtist[n] = nameArtist;
 	}
 	public String getImageArtist(int n) {
 		return imageArtist[n];
 	}
+
 	public void setImageArtist(String imageArtist, int n) {
 		this.imageArtist[n] = imageArtist;
 	}
@@ -20,6 +24,7 @@ public class Performer {
 		return descriptionArtist[n];
 	}
 	public void setDescriptionArtist(String descriptionArtist, int n) {
+
 		this.descriptionArtist[n] = descriptionArtist;
 	}
 	public void setArrays(int nAl) {
@@ -29,5 +34,18 @@ public class Performer {
 		
 	}
 	
+	public int getId(int n) {
+		return id[n];
+	}
+	public void setId(int id,int n) {
+		this.id[n] = id;
+	}
+	public void setArraysPerf(int n)
+	{
+		nameArtist=new String[n];
+		imageArtist= new String[n];
+		descriptionArtist= new String[n];
+		id=new int[n];
+	}
 	
 }
