@@ -22,6 +22,12 @@ public class Performer {
 	public void setDescriptionArtist(String descriptionArtist, int n) {
 		this.descriptionArtist[n] = descriptionArtist;
 	}
+	public void setArrays(int nAl) {
+		nameArtist = new String[nAl];
+		imageArtist = new String[nAl];
+		descriptionArtist = new String[nAl];
+		
+	}
 	
 	
 }
