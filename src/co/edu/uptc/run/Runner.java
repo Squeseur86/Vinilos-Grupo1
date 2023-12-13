@@ -11,6 +11,7 @@ public class Runner {
 		SongControl Sco = new SongControl();
 		PerformerControl perfC=new PerformerControl();
 		BandControl bdC = new BandControl();
+		MusicianControl msC= new MusicianControl();
 		
 		CollectorControl cc = new CollectorControl();
 		String response;
@@ -52,6 +53,7 @@ public class Runner {
 		Sco.setArrayAlbum(100);
 		perfC.setArraysPerfor(100);
 		bdC.setArrayBand(100);
+		msC.setArrayMusican(100);
 		
 		
 		while(opcArtit==1) {
@@ -168,23 +170,100 @@ public class Runner {
 									System.out.println("Choose the option");
 									System.out.println("1 edit band");
 									System.out.println("2 delete band");
+									System.out.println("3 add band to album");
 									option = sc.next();
 									switch(option) {
+									
 									case "1" :
+										System.out.println("Which album do you want to edit band");
+										for(int i=0;i<lengthAlbum;i++)
+										{
+											a1.listAlbNames(i);
+										}
+										id=sc.nextInt();
+										for(int i=0;i<contPerf;i++)
+										{
+											perfC.listPerformer(i, id);
+										}
+										System.out.println("Which performer do you want to choose");
+										response1=sc.nextInt();
 										System.out.println("Which band do you want to edit ");
 										response1=sc.nextInt();
 										bdC.detailBand(sc, response1);
-										bdC.listBand(response1);
+										bdC.listBand(response1,id);
 										break;
 									case "2" :
-										System.out.println("Which perfotmer do you want to delete ");
+										System.out.println("Which album do you want to add band");
+										for(int i=0;i<lengthAlbum;i++)
+										{
+											a1.listAlbNames(i);
+										}
+										id=sc.nextInt();
+										for(int i=0;i<contPerf;i++)
+										{
+											perfC.listPerformer(i, id);
+										}
+										System.out.println("Which performer do you want to delete ");
 										response1=sc.nextInt();
 										bdC.deleteBand(response1);
-										bdC.listBand(response1);
+										bdC.listBand(response1,id);
+										break;
+									case "3":
+										System.out.println("Which album do you want to add band");
+										for(int i=0;i<lengthAlbum;i++)
+										{
+											a1.listAlbNames(i);
+										}
+										id=sc.nextInt();
+										for(int i=0;i<contPerf;i++)
+										{
+											perfC.listPerformer(i, id);
+										}
+										System.out.println("Which performer do you want to choose");
+										response1=sc.nextInt();
+										bdC.setId(id, response1);
+										bdC.listBand(response1, id);
+										msC.detailMusician(sc,contPerf,response1 , id);
 										break;
 									}
-									break;
+									
 								case "2" :
+									System.out.println("Choose the option");
+									System.out.println("1 edit musician");
+									System.out.println("2 delete musician");
+									System.out.println("3 add musician to album");
+									option = sc.next();
+									switch(option) {
+									
+									case "1" :
+										System.out.println("Which musician do you want to edit ");
+										response1=sc.nextInt();
+										msC.detailMusician(sc, contPerf, response1, id);
+										msC.listMusician(response1, id);
+										break;
+									case "2" :
+										System.out.println("Which musician do you want to delete ");
+										response1=sc.nextInt();
+										msC.deleteMusican(response1);
+										msC.listMusician(response1,id);
+										break;
+									case "3":
+										System.out.println("Which album do you want to add musician");
+										for(int i=0;i<lengthAlbum;i++)
+										{
+											a1.listAlbNames(i);
+										}
+										id=sc.nextInt();
+										for(int i=0;i<contPerf;i++)
+										{
+											perfC.listPerformer(i, id);
+										}
+										System.out.println("Which perfotmr do you want to choose");
+										response1=sc.nextInt();
+										msC.listMusician(response1, id);
+										msC.detailMusician(sc,contPerf,response1 , id);
+										break;
+									}
 									break;
 								}
 							}

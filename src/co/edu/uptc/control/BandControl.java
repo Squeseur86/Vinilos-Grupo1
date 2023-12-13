@@ -10,6 +10,10 @@ public class BandControl extends PerformerControl {
 		super.createPerformer(nameArtist, imageArtist, descriptionArtist, n);
 		bd.setCreationDate(year, month, day, n);
 	}
+	public void setId(int id,int n)
+	{
+		bd.setId(id, n);
+	}
 	public void detailBand(Scanner sc, int n) {
 		System.out.println("put the name of the principal artist");
 		String nameArt = sc.next();
@@ -38,9 +42,12 @@ public class BandControl extends PerformerControl {
 		super.deletePerformer(n);
 		bd.setCreationDate(0, 0, 0, n);
 	}
-	public void listBand(int n) {
-		super.listPerformer(n, n);
+	public void listBand(int n,int id) {
+		if(id==bd.getId(n))
+		{
+		super.listPerformer(n, id);
 		System.out.println(bd.getCreationDate(n));
+		}
 	}
 	
 

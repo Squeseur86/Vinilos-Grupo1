@@ -5,6 +5,7 @@ import java.util.Date;
 
 public class Band extends Performer{
 	private Calendar[] creationDate;
+	private int[] id;
 
 	public Date getCreationDate(int n) {
 		return creationDate[n].getTime();
@@ -15,6 +16,14 @@ public class Band extends Performer{
 		this.creationDate[n].set(year, month, day);
 	}
 	
+	
+	public int getId(int n) {
+		return id[n];
+	}
+
+	public void setId(int id,int n) {
+		this.id[n] = id;
+	}
 
 	public Band(String[] nameArtist, String[] imageArtist, String[] descriptionArtist, int[] id, Calendar[] creationDate) {
 		super(nameArtist, imageArtist, descriptionArtist, id);
@@ -30,6 +39,7 @@ public class Band extends Performer{
 		// TODO Auto-generated method stub
 		super.setArrays(nAl);
 		creationDate = new Calendar[nAl];
+		id= new int[nAl];
 	}
 	
 
