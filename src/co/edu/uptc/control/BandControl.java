@@ -15,6 +15,7 @@ public class BandControl extends PerformerControl {
 		bd.setId(id, n);
 	}
 	public void detailBand(Scanner sc, int n) {
+		System.out.println("put the name of the principal artist");
 		String nameArt = sc.next();
 		System.out.println("put the number of the member of the band");
 		int opc = sc.nextInt();
