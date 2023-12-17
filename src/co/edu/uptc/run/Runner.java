@@ -31,7 +31,6 @@ public class Runner {
 		System.out.println("enter your username");
 		username = sc.nextLine();
 		System.out.println("enter your number tellphone ten digits");
-<<<<<<< HEAD
 		tellphone = sc.nextLine();
 		while(tellphone.length()!=10||tellphone.contains(" ")) {
 			if(tellphone.contains(" "))
@@ -41,12 +40,6 @@ public class Runner {
 			}
 			System.out.println("this number tellphone is invalid -it needs at least 10 char");
 			tellphone = sc.nextLine();
-=======
-		tellphone = sc.next();
-		while(tellphone.length()!=10) {
-			System.out.println("this number tellphone is invalid- tellphone needs 10 charts");
-			tellphone = sc.next();
->>>>>>> f5156cd8d8a8217d7c4ae2306c72c7650b6c3573
 		}
 		System.out.println("enter your email ....@gmail.com");
 		email = sc.nextLine() + "@gmail.com";
@@ -56,7 +49,7 @@ public class Runner {
 			email = sc.nextLine() + "@gmail.com";
 		}
 		System.out.println("enter your password 8 charts");
-<<<<<<< HEAD
+
 		password = sc.nextLine();
 		while(password.length()<8||password.contains(" ")) {
 			if(password.contains(" "))
@@ -66,12 +59,6 @@ public class Runner {
 			}
 			System.out.println("this password is invalid-needs at lest 8 char");
 			password = sc.nextLine();
-=======
-		password = sc.next();
-		while(password.length()<8) {
-			System.out.println("this password is invalid- this password needs 8 charts");
-			password = sc.next();
->>>>>>> f5156cd8d8a8217d7c4ae2306c72c7650b6c3573
 		}
 		
 		cc.registCollector(username, tellphone, email, password);
@@ -85,7 +72,6 @@ public class Runner {
 		
 		while(opcArtit==1) {
 		System.out.println("Who is yout favorite artist");
-<<<<<<< HEAD
 		favArtist = sc.nextLine();
 		opcArtit=3;
 		while(opcArtit==3) {
@@ -103,15 +89,9 @@ public class Runner {
 		}catch(NumberFormatException e){
 			System.out.println("the option needs to be a number");
 			opcArtit=3;
-=======
-		favArtist = sc.next();
-		System.out.println("you are sure? 1.no, other number for not");
-		opcArtit =sc.nextInt();		
->>>>>>> f5156cd8d8a8217d7c4ae2306c72c7650b6c3573
 		}
 		}
 		}
-		
 		while(exit)
 		{
 			showMenu();
@@ -379,11 +359,7 @@ public class Runner {
 							if(opc01 == 1) {
 								System.out.println("1.band");
 								System.out.println("2. musician");
-<<<<<<< HEAD
 								System.out.print("3. prize");
-=======
-								System.out.println("3. prize");
->>>>>>> f5156cd8d8a8217d7c4ae2306c72c7650b6c3573
 								option = sc.next();
 								switch(option) {
 								case "1" :
