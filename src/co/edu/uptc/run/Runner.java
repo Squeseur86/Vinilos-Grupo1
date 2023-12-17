@@ -17,38 +17,50 @@ public class Runner {
 		CollectorControl cc = new CollectorControl();
 		String response;
 		String option;
-		boolean responseBool,exit=true, x = false;
+		boolean responseBool,exit=true,x=true;
 		String name, nameSong, yearRelease;
 		String username, tellphone, email, password;
 		String cover;
-		int purcharse=0,lengthAlbum=0,contSong=0,contPerf=0;
+		int purcharse=0,lengthAlbum=0,contSong=0,contPerf=0,contMessage=0;
 		String description;
-		int hours,minutes,seconds,year,month,date,n=0,response1, opcC, comments = 0, opc = 0, id, raiting, opcedit=1;
+		int hours,minutes,seconds,year,month,date,n=0,response1 = 0, opcC, comments = 0, opc = 0, id = 0, raiting, opcedit=1;
 		String genre, genreSong;
 		String raitcad, message, favArtist;
 		int opcArtit=1;
-		while(opcedit ==1 ) {
 		System.out.println("Welcome to the vinyl store, regsister");
 		System.out.println("enter your username");
-		username = sc.next();
+		username = sc.nextLine();
 		System.out.println("enter your number tellphone ten digits");
-		tellphone = sc.next();
-		while(tellphone.length()!=10) {
-			System.out.println("this number tellphone is invalid");
-			tellphone = sc.next();
+		tellphone = sc.nextLine();
+		while(tellphone.length()!=10||tellphone.contains(" ")) {
+			if(tellphone.contains(" "))
+			{
+				System.out.println("this number tellphone is invalid-do not use space");
+				tellphone = sc.nextLine();
+			}
+			System.out.println("this number tellphone is invalid -it needs at least 10 char");
+			tellphone = sc.nextLine();
 		}
 		System.out.println("enter your email ....@gmail.com");
-		email = sc.next() + "@gmail.com ";
+		email = sc.nextLine() + "@gmail.com";
+		while(email.contains(" "))
+		{
+			System.out.println("this email is invalid-do not use space");
+			email = sc.nextLine() + "@gmail.com";
+		}
 		System.out.println("enter your password 8 charts");
-		password = sc.next();
-		while(password.length()<8) {
-			System.out.println("this password is invalid");
-			password = sc.next();
+		password = sc.nextLine();
+		while(password.length()<8||password.contains(" ")) {
+			if(password.contains(" "))
+			{
+				System.out.println("this passoword is invalid-do not use space");
+				password = sc.nextLine();
+			}
+			System.out.println("this password is invalid-needs at lest 8 char");
+			password = sc.nextLine();
 		}
-		System.out.println("Do you want edit your information 1 yes,2.no");
-		opcedit = sc.nextInt();
+		
 		cc.registCollector(username, tellphone, email, password);
-		}
 		cc.setArrayMessage(100);
 		a1.setArrayAlbum(100);
 		Sco.setArrayAlbum(100);
@@ -59,15 +71,32 @@ public class Runner {
 		
 		while(opcArtit==1) {
 		System.out.println("Who is yout favorite artist");
-		favArtist = sc.next();
-		System.out.println("you are sure? 1.no 2.yes");
-		opcArtit =sc.nextInt();		
+		favArtist = sc.nextLine();
+		opcArtit=3;
+		while(opcArtit==3) {
+			System.out.println("you are sure? 1.no 2.yes");
+			option=sc.nextLine();
+		try {
+			opcArtit=Integer.parseInt(option);
+			if(opcArtit==1)
+			{
+			}else if(opcArtit!=2)
+			{
+				System.out.println("the number for exit is 2");
+				opcArtit=3;
+			}
+		}catch(NumberFormatException e){
+			System.out.println("the option needs to be a number");
+			opcArtit=3;
 		}
+		}
+		}
+		
 		while(exit)
 		{
 			showMenu();
 			System.out.println("Choose the option");
-			option=sc.next();
+			option=sc.nextLine();
 			
 			switch(option)
 			{
@@ -86,17 +115,40 @@ public class Runner {
 					System.out.println("5 delete performe");
 					System.out.println("6 edit performe");
 			
-					option=sc.next();
+					option=sc.nextLine();
 					switch(option)
 					{
 						case "1":
-							System.out.println("which album do yo want to edit");
+							
 							for(int i=0;i<lengthAlbum;i++) {
 								System.out.println(" ");
 								a1.listAlbum(i);
 							}
-							n=sc.nextInt();
-							a1.detailAlbum(sc,n-1);
+							x=true;
+							while(x)
+							{
+								System.out.println("which album do yo want to edit");
+								option=sc.nextLine();
+								try {
+										n=Integer.parseInt(option);
+										if(n>100)
+										{
+											System.out.println("the number need to be minor than 100");
+										}else {
+											x=false;
+										}
+									
+								}catch(NumberFormatException e){
+									System.out.println("put the album number");
+								}
+							}
+							if(a1.nullAlbum(n-1)!=null)
+							{
+								a1.detailAlbum(sc,n-1);
+
+							}else {
+								System.out.println("there is no album with this number");
+							}
 							break;
 						case "2":
 							System.out.println("which album do yo want to delete");
@@ -104,68 +156,210 @@ public class Runner {
 								System.out.println(" ");
 								a1.listAlbum(i);
 							}
-							n=sc.nextInt();
-							a1.deleteAlbum(n-1);
-							a1.listAlbum(n-1);
+							x=true;
+							while(x)
+							{
+								System.out.println("which album do yo want to edit");
+								option=sc.nextLine();
+								try {
+										n=Integer.parseInt(option);
+										if(n>100)
+										{
+											System.out.println("the number need to be minor than 100");
+										}else {
+											x=false;
+										}
+									
+								}catch(NumberFormatException e){
+									System.out.println("put the album number");
+								}
+							}
+							if(a1.nullAlbum(n-1)!=null)
+							{
+								a1.deleteAlbum(n-1);
+								a1.listAlbum(n-1);
+
+							}else {
+								System.out.println("there is no album with this number");
+							}
 							break;
 						case "3":
 							for(int i=0;i<lengthAlbum;i++)
 							{
-								int price;
+								int price=0;
 								a1.listAlbum(i);
-								System.out.println("Set price");
-								price=sc.nextInt();
+								
+								x=true;
+								while(x)
+								{
+									System.out.println("Set price");
+									option=sc.nextLine();
+									try {
+											price=Integer.parseInt(option);
+											x=false;
+									}catch(NumberFormatException e){
+										System.out.println("put the album number");
+									}
+								}
 								a1.setPrices(price, i);
 							}
 							break;
 						case "4":
-							System.out.println("Which album do you want to add performer");
+							
 							for(int i=0;i<lengthAlbum;i++)
 							{
 								a1.listAlbNames(i);
 							}
-							id=sc.nextInt();
-							perfC.setIdPerformer((id-1), contPerf);
-							perfC.detailPerformer(sc, contPerf);
-							contPerf++;
+							while(x)
+							{
+								System.out.println("Which album do you want to add performer");
+								option=sc.nextLine();
+								try {
+										id=Integer.parseInt(option);
+										x=false;
+										
+									
+								}catch(NumberFormatException e){
+									System.out.println("put the album number");
+								}
+							}
+							if(a1.nullAlbum((id-1))!=null)
+							{
+								perfC.setIdPerformer((id-1), contPerf);
+								perfC.detailPerformer(sc, contPerf);
+								contPerf++;
+							}else {
+								System.out.println("there is no album with this number");
+							}
+							
 							break;
 						case "5":
-							System.out.println("Which album do you want to delete performer");
+							
 							for(int i=0;i<lengthAlbum;i++)
 							{
 								a1.listAlbNames(i);
 							}
-							id=sc.nextInt();
-							for(int i=0;i<contPerf;i++)
+							x=true;
+							while(x)
 							{
-								perfC.listPerformer(i, id);
+								System.out.println("Which album do you want to delete performer");
+								option=sc.nextLine();
+								try {
+										id=Integer.parseInt(option);
+										x=false;
+										
+									
+								}catch(NumberFormatException e){
+									System.out.println("put the album number");
+								}
 							}
-							System.out.println("Which perfotmer do you want to delete ");
-							response1=sc.nextInt();
-							perfC.deletePerformer(response1);
-							perfC.listPerformer(response1, id);
+							if(a1.nullAlbum(id-1)!=null)
+							{
+								for(int i=0;i<contPerf;i++)
+								{
+									perfC.listPerformer(i, id);
+								}
+								x=true;
+								while(x)
+								{
+									System.out.println("Which performer do you want to delete ");
+									for(int i=0;i<contPerf;i++)
+									{
+										perfC.listPerformer(i, (id-1));
+									}
+									option=sc.nextLine();
+									try {
+											response1=Integer.parseInt(option);
+											x=false;
+											
+										
+									}catch(NumberFormatException e){
+										System.out.println("put the performer number");
+									}
+								}
+								if(perfC.nullPerforme(id-1)!=null)
+								{
+									response1=sc.nextInt();
+									perfC.deletePerformer(response1);
+									perfC.listPerformer(response1, id);
+								}else {
+									System.out.println("there is no performer with this number");
+								}
+							}else {
+								System.out.println("there is no album with this number");
+							}
+							
 							break;
 						case "6":
-							System.out.println("Which album do you want to edit performer");
+							
 							for(int i=0;i<lengthAlbum;i++)
 							{
 								a1.listAlbNames(i);
 							}
-							id=sc.nextInt();
-							for(int i=0;i<contPerf;i++)
+							x=true;
+							while(x)
 							{
-								perfC.listPerformer(i, id);
+								System.out.println("Which album do you want to edit performer");
+								option=sc.nextLine();
+								try {
+										id=Integer.parseInt(option);
+										x=false;
+										
+									
+								}catch(NumberFormatException e){
+									System.out.println("put the album number");
+								}
 							}
-							System.out.println("Which perfotmr do you want to edit ");
-							response1=sc.nextInt();
-							perfC.detailPerformer(sc, response1);
-							perfC.listPerformer(response1, id);
-							System.out.println("The perform is a band or musician , 1. yes");
-							int opc01 = sc.nextInt();
-							while(opc01 == 1) {
+							if(a1.nullAlbum(id-1)!=null)
+							{
+								for(int i=0;i<contPerf;i++)
+								{
+									perfC.listPerformer(i, id);
+								}
+								x=true;
+								while(x)
+								{
+									System.out.println("Which performer do you want to edit ");
+									option=sc.nextLine();
+									try {
+											response1=Integer.parseInt(option);
+											x=false;
+											
+										
+									}catch(NumberFormatException e){
+										System.out.println("put the performer number");
+									}
+								}
+								if(perfC.nullPerforme(id-1)!=null)
+								{
+									perfC.detailPerformer(sc,response1);
+									perfC.listPerformer(response1,id-1);
+								}else {
+									System.out.println("there is no performer with this number");
+								}
+							}else {
+								System.out.println("there is no album with this number");
+							}
+							
+							int opc01 = 0;
+							x=true;
+							while(x)
+							{
+								System.out.println("The perform is a band or musician , 1. yes");
+								option=sc.nextLine();
+								try {
+										opc01=Integer.parseInt(option);
+										x=false;
+										
+									
+								}catch(NumberFormatException e){
+									System.out.println("put only a number");
+								}
+							}
+							if(opc01 == 1) {
 								System.out.println("1.band");
 								System.out.println("2. musician");
-								System.out.println("3. musician");
+								System.out.print("3. prize");
 								option = sc.next();
 								switch(option) {
 								case "1" :
@@ -177,58 +371,199 @@ public class Runner {
 									switch(option) {
 									
 									case "1" :
-										System.out.println("Which album do you want to edit band");
+										
 										for(int i=0;i<lengthAlbum;i++)
 										{
 											a1.listAlbNames(i);
 										}
-										id=sc.nextInt();
-										for(int i=0;i<contPerf;i++)
+										x=true;
+										while(x)
 										{
-											perfC.listPerformer(i, (id-1));
+											System.out.println("Which album do you want to edit band");
+											option=sc.nextLine();
+											try {
+													id=Integer.parseInt(option);
+													x=false;
+													
+												
+											}catch(NumberFormatException e){
+												System.out.println("put the album number");
+											}
 										}
-										System.out.println("Which performer do you want to choose");
-										response1=sc.nextInt();
-										System.out.println("Which band do you want to edit ");
-										response1=sc.nextInt();
-										bdC.detailBand(sc, response1);
-										bdC.listBand((response1-1),(id-1));
+										if(a1.nullAlbum(id-1)!=null)
+										{
+											for(int i=0;i<contPerf;i++)
+											{
+												perfC.listPerformer(i, id);
+											}
+											x=true;
+											while(x)
+											{
+												System.out.println("Which performer do you want to choose ");
+												option=sc.nextLine();
+												try {
+														response1=Integer.parseInt(option);
+														x=false;
+														
+													
+												}catch(NumberFormatException e){
+													System.out.println("put the performer number");
+												}
+											}
+											if(perfC.nullPerforme(id-1)!=null)
+											{
+												x=true;
+												while(x=true) {
+													System.out.println("Which band do you want to edit ");
+													option=sc.nextLine();
+													try {
+														response1=Integer.parseInt(option);
+														x=false;
+													}catch(NumberFormatException e){
+														System.out.println("put the band number");
+													}
+												}
+												bdC.detailBand(sc, response1);
+												bdC.listBand((response1-1),(id-1));
+											}else {
+												System.out.println("there is no performer with this number");
+											}
+										}else {
+											System.out.println("there is no album with this number");
+										}
+										
+										
 										break;
 									case "2" :
-										System.out.println("Which album do you want to add band");
+										
 										for(int i=0;i<lengthAlbum;i++)
 										{
 											a1.listAlbNames(i);
 										}
-										id=sc.nextInt();
-										for(int i=0;i<contPerf;i++)
+										x=true;
+										while(x)
 										{
-											perfC.listPerformer(i, (id-1));
+											System.out.println("Which album do you want to delete band");
+											option=sc.nextLine();
+											try {
+													id=Integer.parseInt(option);
+													x=false;
+													
+												
+											}catch(NumberFormatException e){
+												System.out.println("put the album number");
+											}
 										}
-										System.out.println("Which performer do you want to delete ");
-										response1=sc.nextInt();
-										bdC.deleteBand(response1);
-										bdC.listBand((response1-1),(id-1));
+										if(a1.nullAlbum(id-1)!=null)
+										{
+											for(int i=0;i<contPerf;i++)
+											{
+												perfC.listPerformer(i, id);
+											}
+											x=true;
+											while(x)
+											{
+												System.out.println("Which performer do you want to choose ");
+												option=sc.nextLine();
+												try {
+														response1=Integer.parseInt(option);
+														x=false;
+														
+													
+												}catch(NumberFormatException e){
+													System.out.println("put the performer number");
+												}
+											}
+											if(perfC.nullPerforme(id-1)!=null)
+											{
+												x=true;
+												while(x=true) {
+													System.out.println("Which band do you want to edit ");
+													option=sc.nextLine();
+													try {
+														response1=Integer.parseInt(option);
+														x=false;
+													}catch(NumberFormatException e){
+														System.out.println("put the band number");
+													}
+												}
+												bdC.deleteBand(response1);
+												bdC.listBand((response1-1),(id-1));
+											}else {
+												System.out.println("there is no performer with this number");
+											}
+										}else {
+											System.out.println("there is no album with this number");
+										}
+										
 										break;
 									case "3":
-										System.out.println("Which album do you want to add band");
+										
 										for(int i=0;i<lengthAlbum;i++)
 										{
 											a1.listAlbNames(i);
 										}
-										id=sc.nextInt();
-										for(int i=0;i<contPerf;i++)
+										x=true;
+										while(x)
 										{
-											perfC.listPerformer(i, (id-1));
+											System.out.println("Which album do you want to add band");
+											option=sc.nextLine();
+											try {
+													id=Integer.parseInt(option);
+													x=false;
+													
+												
+											}catch(NumberFormatException e){
+												System.out.println("put the album number");
+											}
 										}
-										System.out.println("Which performer do you want to choose");
-										response1=sc.nextInt();
-										bdC.setId((id-1), (response1-1));
-										bdC.listBand(response1, (id-1));
-										msC.detailMusician(sc,contPerf,(response1-1) , (id-1));
+										if(a1.nullAlbum(id-1)!=null)
+										{
+											for(int i=0;i<contPerf;i++)
+											{
+												perfC.listPerformer(i, id);
+											}
+											x=true;
+											while(x)
+											{
+												System.out.println("Which performer do you want to choose ");
+												option=sc.nextLine();
+												try {
+														response1=Integer.parseInt(option);
+														x=false;
+														
+													
+												}catch(NumberFormatException e){
+													System.out.println("put the performer number");
+												}
+											}
+											if(perfC.nullPerforme(id-1)!=null)
+											{
+												x=true;
+												while(x=true) {
+													System.out.println("Which band do you want to edit ");
+													option=sc.nextLine();
+													try {
+														response1=Integer.parseInt(option);
+														x=false;
+													}catch(NumberFormatException e){
+														System.out.println("put the band number");
+													}
+												}
+												bdC.deleteBand(response1);
+												bdC.listBand((response1-1),(id-1));
+												bdC.setId((id-1), (response1-1));
+												bdC.listBand(response1, (id-1));
+												msC.detailMusician(sc,contPerf,(response1-1) , (id-1));
+											}else {
+												System.out.println("there is no performer with this number");
+											}
+										}else {
+											System.out.println("there is no album with this number");
+										}
+										
 										break;
 									}
-									
 								case "2" :
 									System.out.println("Choose the option");
 									System.out.println("1 edit musician");
@@ -238,52 +573,191 @@ public class Runner {
 									switch(option) {
 									
 									case "1" :
-										System.out.println("Which album do you want to edit musician");
+										
 										for(int i=0;i<lengthAlbum;i++)
 										{
 											a1.listAlbNames(i);
 										}
-										id=sc.nextInt();
-										for(int i=0;i<contPerf;i++)
+										x=true;
+										while(x)
 										{
-											perfC.listPerformer(i, (id-1));
+											System.out.println("Which album do you want to edit musician");
+											option=sc.nextLine();
+											try {
+													id=Integer.parseInt(option);
+													x=false;
+													
+												
+											}catch(NumberFormatException e){
+												System.out.println("put the album number");
+											}
 										}
-										System.out.println("Which musician do you want to edit ");
-										response1=sc.nextInt();
-										msC.detailMusician(sc, contPerf, (response1-1), (id-1));
-										msC.listMusician((response1-1), (id-1));
+										if(a1.nullAlbum(id-1)!=null)
+										{
+											for(int i=0;i<contPerf;i++)
+											{
+												perfC.listPerformer(i, id);
+											}
+											x=true;
+											while(x)
+											{
+												System.out.println("Which performer do you want to choose ");
+												option=sc.nextLine();
+												try {
+														response1=Integer.parseInt(option);
+														x=false;
+														
+													
+												}catch(NumberFormatException e){
+													System.out.println("put the performer number");
+												}
+											}
+											if(perfC.nullPerforme(id-1)!=null)
+											{
+												x=true;
+												while(x=true) {
+													System.out.println("Which musician do you want to edit ");
+													option=sc.nextLine();
+													try {
+														response1=Integer.parseInt(option);
+														x=false;
+													}catch(NumberFormatException e){
+														System.out.println("put the musician number");
+													}
+												}
+												msC.detailMusician(sc, contPerf, (response1-1), (id-1));
+												msC.listMusician((response1-1), (id-1));
+											}else {
+												System.out.println("there is no performer with this number");
+											}
+										}else {
+											System.out.println("there is no album with this number");
+										}
 										break;
 									case "2" :
-										System.out.println("Which album do you want to delete musician");
+										
 										for(int i=0;i<lengthAlbum;i++)
 										{
 											a1.listAlbNames(i);
 										}
-										id=sc.nextInt();
-										for(int i=0;i<contPerf;i++)
+										x=true;
+										while(x)
 										{
-											perfC.listPerformer(i, (id-1));
+											System.out.println("Which album do you want to delete musician");
+											option=sc.nextLine();
+											try {
+													id=Integer.parseInt(option);
+													x=false;
+													
+												
+											}catch(NumberFormatException e){
+												System.out.println("put the album number");
+											}
 										}
-										System.out.println("Which musician do you want to delete ");
-										response1=sc.nextInt();
-										msC.deleteMusican((response1-1));
-										msC.listMusician((response1-1),(id-1));
+										if(a1.nullAlbum(id-1)!=null)
+										{
+											for(int i=0;i<contPerf;i++)
+											{
+												perfC.listPerformer(i, id);
+											}
+											x=true;
+											while(x)
+											{
+												System.out.println("Which performer do you want to choose ");
+												option=sc.nextLine();
+												try {
+														response1=Integer.parseInt(option);
+														x=false;
+														
+													
+												}catch(NumberFormatException e){
+													System.out.println("put the performer number");
+												}
+											}
+											if(perfC.nullPerforme(id-1)!=null)
+											{
+												x=true;
+												while(x=true) {
+													System.out.println("Which musician do you want to delete ");
+													option=sc.nextLine();
+													try {
+														response1=Integer.parseInt(option);
+														x=false;
+													}catch(NumberFormatException e){
+														System.out.println("put the musician number");
+													}
+												}
+												msC.deleteMusican((response1-1));
+												msC.listMusician((response1-1),(id-1));
+											}else {
+												System.out.println("there is no performer with this number");
+											}
+										}else {
+											System.out.println("there is no album with this number");
+										}
 										break;
 									case "3":
-										System.out.println("Which album do you want to add musician");
 										for(int i=0;i<lengthAlbum;i++)
 										{
 											a1.listAlbNames(i);
 										}
-										id=sc.nextInt();
-										for(int i=0;i<contPerf;i++)
+										x=true;
+										while(x)
 										{
-											perfC.listPerformer(i, (id-1));
+											System.out.println("Which album do you want to add musician");
+											option=sc.nextLine();
+											try {
+													id=Integer.parseInt(option);
+													x=false;
+													
+												
+											}catch(NumberFormatException e){
+												System.out.println("put the album number");
+											}
 										}
-										System.out.println("Which perfotmr do you want to choose");
-										response1=sc.nextInt();
-										msC.listMusician((response1-1), (id-1));
-										msC.detailMusician(sc,contPerf,(response1-1) , (id-1));
+										if(a1.nullAlbum(id-1)!=null)
+										{
+											for(int i=0;i<contPerf;i++)
+											{
+												perfC.listPerformer(i, id);
+											}
+											x=true;
+											while(x)
+											{
+												System.out.println("Which performer do you want to chosse ");
+												option=sc.nextLine();
+												try {
+														response1=Integer.parseInt(option);
+														x=false;
+														
+													
+												}catch(NumberFormatException e){
+													System.out.println("put the performer number");
+												}
+											}
+											if(perfC.nullPerforme(id-1)!=null)
+											{
+												x=true;
+												while(x=true) {
+													System.out.println("Which musician do you want to add to an album ");
+													option=sc.nextLine();
+													try {
+														response1=Integer.parseInt(option);
+														x=false;
+													}catch(NumberFormatException e){
+														System.out.println("put the musician number");
+													}
+												}
+												msC.listMusician((response1-1), (id-1));
+												msC.detailMusician(sc,contPerf,(response1-1) , (id-1));
+											}else {
+												System.out.println("there is no performer with this number");
+											}
+										}else {
+											System.out.println("there is no album with this number");
+										}
+		
+										
 										break;
 									}
 									break;
@@ -295,43 +769,129 @@ public class Runner {
 									option=sc.next();
 									switch(option) {
 										case "1" :
-											System.out.println("Which album do you want to choose");
+											
 											for(int i=0;i<lengthAlbum;i++)
 											{
 												a1.listAlbNames(i);
 											}
-											id=sc.nextInt();
-											for(int i=0;i<contPerf;i++)
+											x=true;
+											while(x)
 											{
-												perfC.listPerformer(i, (id-1));
+												System.out.println("Which album do you want to choose");
+												option=sc.nextLine();
+												try {
+														id=Integer.parseInt(option);
+														x=false;
+														
+													
+												}catch(NumberFormatException e){
+													System.out.println("put the album number");
+												}
 											}
-											System.out.println("Which perfomre do you want to edit prize ");
-											response1=sc.nextInt();
-											przC.detailPrize(sc, (response1-1));
-											break;
+											if(a1.nullAlbum(id-1)!=null)
+											{
+												for(int i=0;i<contPerf;i++)
+												{
+													perfC.listPerformer(i, id);
+												}
+												x=true;
+												while(x)
+												{
+													System.out.println("Which perfomer do you want to edit prize ");
+													option=sc.nextLine();
+													try {
+															response1=Integer.parseInt(option);
+															x=false;
+															
+														
+													}catch(NumberFormatException e){
+														System.out.println("put the performer number");
+													}
+												}
+												if(perfC.nullPerforme(id-1)!=null)
+												{
+													przC.detailPrize(sc, (response1-1));
+												}else {
+													System.out.println("there is no performer with this number");
+												}
+											}else {
+												System.out.println("there is no album with this number");
+											}
 										case "2" :
 											System.out.println("Which album do you want to choose");
 											for(int i=0;i<lengthAlbum;i++)
 											{
 												a1.listAlbNames(i);
 											}
-											id=sc.nextInt();
-											for(int i=0;i<contPerf;i++)
+											x=true;
+											while(x)
 											{
-												perfC.listPerformer(i, (id-1));
+												System.out.println("Which album do you want to choose");
+												option=sc.nextLine();
+												try {
+														id=Integer.parseInt(option);
+														x=false;
+														
+													
+												}catch(NumberFormatException e){
+													System.out.println("put the album number");
+												}
 											}
-											System.out.println("Which perfomre do you want to edit prize ");
-											response1=sc.nextInt();
-											przC.setPricedate(sc, (response1-1));
-										
+											if(a1.nullAlbum(id-1)!=null)
+											{
+												for(int i=0;i<contPerf;i++)
+												{
+													perfC.listPerformer(i, id);
+												}
+												x=true;
+												while(x)
+												{
+													System.out.println("Which perfomre do you want to set date prize ");
+													option=sc.nextLine();
+													try {
+															response1=Integer.parseInt(option);
+															x=false;
+															
+														
+													}catch(NumberFormatException e){
+														System.out.println("put the performer number");
+													}
+												}
+												if(perfC.nullPerforme(id-1)!=null)
+												{
+													przC.setPricedate(sc, (response1-1));
+												}else {
+													System.out.println("there is no performer with this number");
+												}
+											}else {
+												System.out.println("there is no album with this number");
+											}
 											break;
 										case "3" :
-											for(int i=0;i<contPerf;i++)	{
-												perfC.listPerformer(i, (id-1));
+											for(int i=0;i<contPerf;i++)
+											{
+												perfC.listPerformer(i, id);
 											}
-											System.out.println("Which perfomre do you want to win prize ");
-											response1 = sc.nextInt();
-											przC.detailPrize(sc, (response1-1));
+											x=true;
+											while(x)
+											{
+												System.out.println("Which perfomer do you want to win prize ");
+												option=sc.nextLine();
+												try {
+														response1=Integer.parseInt(option);
+														x=false;
+														
+													
+												}catch(NumberFormatException e){
+													System.out.println("put the performer number");
+												}
+											}
+											if(perfC.nullPerforme(id-1)!=null)
+											{
+												przC.detailPrize(sc, (response1-1));
+											}else {
+												System.out.println("there is no performer with this number");
+											}
 											
 											break;
 									}
@@ -341,15 +901,34 @@ public class Runner {
 					}
 					break;
 				case "3":
-					System.out.println("Which album do you want to add song");
+					
 					for(int i=0;i<lengthAlbum;i++)
 					{
 						a1.listAlbNames(i);
 					}
-					id=sc.nextInt();
-					Sco.detailSong(sc, contSong);
-					Sco.setId(contSong, (id-1));
-					contSong++;
+					x=true;
+					while(x)
+					{
+						System.out.println("Which album do you want to add song");
+						option=sc.nextLine();
+						try {
+								id=Integer.parseInt(option);
+								x=false;
+								
+							
+						}catch(NumberFormatException e){
+							System.out.println("put the album number");
+						}
+					}
+					if(a1.nullAlbum(id-1)!=null)
+					{
+						Sco.detailSong(sc, contSong);
+						Sco.setId(contSong, (id-1));
+						contSong++;
+					}else {
+						System.out.println("there is no album with this number");
+					}
+					
 					break;
 				case "4":
 					System.out.println("Choose the option");
@@ -366,88 +945,227 @@ public class Runner {
 							{
 								a1.listAlbNames(i);
 							}
-							id=sc.nextInt();
-							for(int i=0;i<contSong;i++){
-								
-								Sco.listSongs(i,(id-1));
+							x=true;
+							while(x)
+							{
+								System.out.println("Which album do you want to add song");
+								option=sc.nextLine();
+								try {
+										id=Integer.parseInt(option);
+										x=false;
+										
+									
+								}catch(NumberFormatException e){
+									System.out.println("put the album number");
+								}
 							}
-							System.out.println("Choose the song");
-							response1=sc.nextInt();
-								Sco.detailSong(sc, response1);
-								Sco.listSongs(response1,(id-1));	
+							if(a1.nullAlbum(id-1)!=null)
+							{
+								for(int i=0;i<contSong;i++){
+									
+									Sco.listSongs(i,(id-1));
+								}
+								x=true;
+								while(x)
+								{
+									System.out.println("Choose the song");
+									option=sc.nextLine();
+									try {
+											response1=Integer.parseInt(option);
+											x=false;
+											
+										
+									}catch(NumberFormatException e){
+										System.out.println("put the song number");
+									}
+								}
+								if(Sco.nullSong(response1-1)!=null)
+								{
+									Sco.detailSong(sc, response1);
+									Sco.listSongs(response1,(id-1));	
+								}else {
+									System.out.println("there is no song with this number");
+								}
+							}else {
+								System.out.println("there is no album with this number");
+							}
 							break;
 						case "2":
-							System.out.println("Which album do you want to delete song");
+							
 							for(int i=0;i<lengthAlbum;i++)
 							{
 								a1.listAlbNames(i);
 							}
-							id=sc.nextInt();
-							for(int i=0;i<contSong;i++)
+							x=true;
+							while(x)
 							{
-								Sco.listSongs(i,(id-1));
+								System.out.println("Which album do you want to delete song");
+								option=sc.nextLine();
+								try {
+										id=Integer.parseInt(option);
+										x=false;
+										
+									
+								}catch(NumberFormatException e){
+									System.out.println("put the album number");
+								}
 							}
-							System.out.println("Which song do you want to delete?");
-							response1=sc.nextInt();
-							
-							Sco.delateSong(response1);
-							Sco.listSongs(response1,id);
+							if(a1.nullAlbum(id-1)!=null)
+							{
+								for(int i=0;i<contSong;i++){
+									
+									Sco.listSongs(i,(id-1));
+								}
+								x=true;
+								while(x)
+								{
+									System.out.println("Which song do you want to delete?");
+									option=sc.nextLine();
+									try {
+											response1=Integer.parseInt(option);
+											x=false;
+											
+										
+									}catch(NumberFormatException e){
+										System.out.println("put the song number");
+									}
+								}
+								if(Sco.nullSong(response1-1)!=null)
+								{
+									Sco.delateSong(response1);
+									Sco.listSongs(response1,id);
+								}else {
+									System.out.println("there is no song with this number");
+								}
+							}else {
+								System.out.println("there is no album with this number");
+							}
 							break;
 						case "3":
-							System.out.println("Which album do you want to take out song");
+							
 							for(int i=0;i<lengthAlbum;i++)
 							{
 								a1.listAlbNames(i);
 							}
-							id=sc.nextInt();
-							for(int i=0;i<contSong;i++)
+							x=true;
+							while(x)
 							{
-								Sco.listSongs(i,(id-1));
+								System.out.println("Which album do you want to take out song");
+								option=sc.nextLine();
+								try {
+										id=Integer.parseInt(option);
+										x=false;
+										
+									
+								}catch(NumberFormatException e){
+									System.out.println("put the album number");
+								}
 							}
-							System.out.println("Which song do you want to take out?");
-							response1=sc.nextInt();
-							System.out.println("Which album do you want to put the song");
-							for(int i=0;i<lengthAlbum;i++)
+							if(a1.nullAlbum(id-1)!=null)
 							{
-								a1.listAlbNames(i);
+								for(int i=0;i<contSong;i++){
+									
+									Sco.listSongs(i,(id-1));
+								}
+								x=true;
+								while(x)
+								{
+									System.out.println("Which song do you want to take out?");
+									option=sc.nextLine();
+									try {
+											response1=Integer.parseInt(option);
+											x=false;
+											
+										
+									}catch(NumberFormatException e){
+										System.out.println("put the song number");
+									}
+								}
+								if(Sco.nullSong(response1-1)!=null)
+								{
+									for(int i=0;i<lengthAlbum;i++)
+									{
+										a1.listAlbNames(i);
+									}
+									x=true;
+									while(x)
+									{
+										System.out.println("Which album do you want to put the song");
+										option=sc.nextLine();
+										try {
+												id=Integer.parseInt(option);
+												x=false;
+												
+											
+										}catch(NumberFormatException e){
+											System.out.println("put the album number");
+										}
+									}
+									if(a1.nullAlbum(id-1)!=null)
+									{
+										Sco.setId((response1-1), id);
+									}else {
+										System.out.println("there is no album with this number");
+									}
+								}else {
+									System.out.println("there is no song with this number");
+								}
+							}else {
+								System.out.println("there is no album with this number");
 							}
-							id=sc.nextInt();
-							Sco.setId((response1-1), id);
 							break;
 					}
 					break;
 				case "5":
 					System.out.println("verify your identity");
 					System.out.println("Insert your username");
-					username=sc.next();
+					username=sc.nextLine();
 					System.out.println("Insert your password");
-					password=sc.next();
+					password=sc.nextLine();
 					while(cc.verifyCollector(username, password))
 					{
 						System.out.println("verify your identity");
 						System.out.println("Insert your username");
-						username=sc.next();
+						username=sc.nextLine();
 						System.out.println("Insert your password");
-						password=sc.next();
+						password=sc.nextLine();
 					}
 					while(exit)
 					{
 					cc.collectorMenuShop();
-					option=sc.next();
+					option=sc.nextLine();
 					switch(option)
 					{
 						case "1":
-							System.out.println("which album do you want to see");
+							
 							for(int i=0;i<lengthAlbum;i++) {
 								a1.listAlbNames(i);
 							}
-							id=sc.nextInt();
-							a1.listAlbum((id-1));
-							for(int i=0;i<contSong;i++)
+							x=true;
+							while(x)
 							{
-								Sco.listSongs(i, (id-1));
+								System.out.println("which album do you want to see");
+								option=sc.nextLine();
+								try {
+										id=Integer.parseInt(option);
+										x=false;
+										
+									
+								}catch(NumberFormatException e){
+									System.out.println("put the album number");
+								}
 							}
-								a1.getPrice((id-1));
+							if(a1.nullAlbum(id-1)!=null)
+							{
+								a1.listAlbum((id-1));
+								for(int i=0;i<contSong;i++)
+								{
+									Sco.listSongs(i, (id-1));
+								}
+									a1.getPrice((id-1));
+							}else {
+								System.out.println("there is no album with this number");
+							}
 							break;
 						case "2":
 							for(int i=0;i<n;i++) {
@@ -457,10 +1175,28 @@ public class Runner {
 								System.out.println("Album price "+(i+1));
 								a1.getPrice(i);
 							}
-							System.out.println("Which album fo you want to buy");
-							response1=sc.nextInt();
-							purcharse=response1;
-							a1.purchasingAlbum(response1);
+							
+							while(x)
+							{
+								System.out.println("Which album fo you want to buy");
+								option=sc.nextLine();
+								try {
+										response1=Integer.parseInt(option);
+										x=false;
+										
+									
+								}catch(NumberFormatException e){
+									System.out.println("put the album number");
+								}
+							}
+							if(a1.nullAlbum(response1-1)!=null)
+							{
+								purcharse=response1-1;
+								a1.purchasingAlbum(response1);
+							}else {
+								System.out.println("there is no album with this number");
+							}
+							
 							break;
 						case "3":
 							System.out.println(a1.purchasingAlbum(purcharse));
@@ -474,44 +1210,115 @@ public class Runner {
 					break;
 				case "6":
 					
-					if(n==0)
+					if(contMessage==0)
 					{
 						System.out.println("there is no message");
 					}
-					for(int i=0;i<n;i++){
+					for(int i=0;i<contMessage;i++){
 						System.out.println("message "+(i+1));
 						System.out.println(i);
 						cc.listMessage(i);
 					}
-					cc.detailmesage(sc, n);
-					n = n +1;
+					cc.detailmesage(sc, contMessage);
+					contMessage++;
 					break;
 				case "7":
-					System.out.println("which album do you want to see");
+					System.out.println("enter your username");
+					username = sc.nextLine();
+					System.out.println("enter your number tellphone ten digits");
+					tellphone = sc.nextLine();
+					while(tellphone.length()!=10&& tellphone.contains(" ")) {
+						if(tellphone.contains(" "))
+						{
+							System.out.println("this number tellphone is invalid-do not use space");
+							tellphone = sc.nextLine();
+						}
+						System.out.println("this number tellphone is invalid -it needs at least 10 char");
+						tellphone = sc.nextLine();
+					}
+					System.out.println("enter your email ....@gmail.com");
+					email = sc.nextLine() + "@gmail.com ";
+					while(email.contains(" "))
+					{
+						System.out.println("this email is invalid-do not use space");
+						email=sc.nextLine();
+					}
+					System.out.println("enter your password 8 charts");
+					password = sc.nextLine();
+					while(password.length()<8&&password.contains(" ")) {
+						if(password.contains(" "))
+						{
+							System.out.println("this passoword is invalid-do not use space");
+							password = sc.nextLine();
+						}
+						System.out.println("this password is invalid");
+						password = sc.nextLine();
+					}
+					cc.registCollector(username, tellphone, email, password);
+					break;
+				case "8":
+					
 					for(int i=0;i<lengthAlbum;i++) {
 						a1.listAlbNames(i);
 					}
-					id=sc.nextInt();
-					a1.listAlbum((id-1));
-					for(int i=0;i<contSong;i++)
+					x=true;
+					while(x)
 					{
-						Sco.listSongs(i, (id-1));
+						System.out.println("which album do you want to see");
+						option=sc.nextLine();
+						try {
+								id=Integer.parseInt(option);
+								x=false;
+								
+							
+						}catch(NumberFormatException e){
+							System.out.println("put the album number");
+						}
 					}
-					System.out.println("which performer do you want to see");
-					for(int i=0;i<contPerf;i++)
+					if(a1.nullAlbum(id-1)!=null)
 					{
-						perfC.listPerformer(i, id);
+						a1.listAlbum((id-1));
+						for(int i=0;i<contSong;i++)
+						{
+							Sco.listSongs(i, (id-1));
+						}
+						System.out.println("performers");
+						for(int i=0;i<contPerf;i++)
+						{
+							perfC.listPerformer(i, id-1);
+						}
+						x=true;
+						while(x)
+						{
+							System.out.println("which performer do you want to see");
+							option=sc.nextLine();
+							try {
+									response1=Integer.parseInt(option);
+									x=false;
+									
+								
+							}catch(NumberFormatException e){
+								System.out.println("put the song number");
+							}
+						}
+						if(perfC.nullPerforme(response1-1)!=null)
+						{
+							bdC.listBand(response1-1, id-1);
+							msC.listMusician(response1-1, id-1);
+							przC.listPrizes(response1-1, id-1);
+						}else {
+							System.out.println("there is no song with this number");
+						}
+					}else {
+						System.out.println("there is no album with this number");
 					}
-					response1=sc.nextInt();
-					bdC.listBand(response1, id);
-					msC.listMusician(response1, id);
-					przC.listPrizes(response1, id);
+					
 					break;
-				case "8":
+				case "9":
 					exit=false;
 					break;
 				default:
-					System.out.println("opcion invalida");
+					System.out.println("invalid option");
 					break;
 			}
 			
@@ -525,7 +1332,8 @@ public class Runner {
 		System.out.println("4 options songs");
 		System.out.println("5 Shop");
 		System.out.println("6 comment album");
-		System.out.println("7 list album");
-		System.out.println("8 exit");
+		System.out.println("7 edit profile information");
+		System.out.println("8 list album");
+		System.out.println("9 exit");
 	}
 }

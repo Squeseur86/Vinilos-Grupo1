@@ -32,26 +32,93 @@ public class AlbumControl {
 		System.out.println("Record Label: "+a1.getRecordLabel(n) );	
 	}
 	public static void detailAlbum(Scanner sc,int n) {
+		boolean numberVerif=true;
 		System.out.println("put the name of the album");
-		String name =sc.next();
+		String name =sc.nextLine();
 		System.out.println("put the image url ");
-		String cover=sc.next();
+		String cover=sc.nextLine();
 		System.out.println("write the album description");
-		String description=sc.next();
-		System.out.println("put the hours of the album");
-		int hours = sc.nextInt();
-		System.out.println("put the minutes of the album");
-		int minutes=sc.nextInt();
-		System.out.println("put the seconds of the album");
-		int seconds=sc.nextInt();
-		System.out.println("put the year that was released the album");
-		int year=sc.nextInt();
-		System.out.println("put the month(1-12) that was released the album");
-		int month=sc.nextInt()-1;
-		System.out.println("put the day that was released the album");
-		int date=sc.nextInt();
+		String description=sc.nextLine();
+		int hours=0;
+		while(numberVerif)
+		{
+			System.out.println("put the hours of the album");
+			String hoursString=sc.nextLine();
+			try {
+				hours=Integer.parseInt(hoursString);
+				numberVerif=false;
+			}catch(NumberFormatException e){
+				System.out.println("the hours needs to be a number");
+			}
+		}
+		numberVerif=true;
+		int minutes=0;
+		while(numberVerif)
+		{
+			System.out.println("put the minutes of the album");
+			String minutesString=sc.nextLine();
+			try {
+				minutes=Integer.parseInt(minutesString);
+				numberVerif=false;
+			}catch(NumberFormatException e){
+				System.out.println("the minutes needs to be a number");
+			}
+		}
+		numberVerif=true;
+		int seconds=0;
+		while(numberVerif)
+		{
+			System.out.println("put the seconds of the album");
+			String secondsString=sc.nextLine();
+			try {
+				seconds=Integer.parseInt(secondsString);
+				numberVerif=false;
+			}catch(NumberFormatException e){
+				System.out.println("the seconds needs to be a number");
+			}
+		}
+		numberVerif=true;
+		int year=0;
+		while(numberVerif)
+		{
+			System.out.println("put the year of the album");
+			String yearString=sc.nextLine();
+			try {
+				year=Integer.parseInt(yearString);
+				numberVerif=false;
+			}catch(NumberFormatException e){
+				System.out.println("the year needs to be a number");
+			}
+		}
+		
+		numberVerif=true;
+		int month=0;
+		while(numberVerif)
+		{
+			System.out.println("put the month of the album");
+			String monthString=sc.nextLine();
+			try {
+				month=Integer.parseInt(monthString);
+				numberVerif=false;
+			}catch(NumberFormatException e){
+				System.out.println("the month needs to be a number");
+			}
+		}
+		numberVerif=true;
+		int date=0;
+		while(numberVerif)
+		{
+			System.out.println("put the day of the album");
+			String dateString=sc.nextLine();
+			try {
+				date=Integer.parseInt(dateString);
+				numberVerif=false;
+			}catch(NumberFormatException e){
+				System.out.println("the day needs to be a number");
+			}
+		}
 		System.out.println("write the genre of the album");
-		String genre=sc.next();
+		String genre=sc.nextLine();
 		createAlbum(name, cover, description, year, month, date, genre, hours, minutes, seconds,n);
 	}
 	public void setArrayAlbum(int n) {
@@ -80,6 +147,10 @@ public class AlbumControl {
 			System.out.println("Album purchased");
 			return a1.getName(response-1);
 		}
+	}
+	public String nullAlbum (int n) {
+		String albumNull=a1.getName(n);
+		return albumNull;
 	}
 	public void listAlbNames(int n)
 	{
