@@ -5,13 +5,13 @@ import co.edu.uptc.model.Musician;
 
 public class MusicianControl extends PerformerControl{
 	
-	Musician musc= new Musician();
+	static Musician musc= new Musician();
 	
 	public MusicianControl() {
 		super();
 		musc=new Musician();
 	}
-	public void createMusican(int year,int month,int day,int n) {
+	public static void createMusican(int year,int month,int day,int n) {
 		musc.setBirthDate(year, month, day, n);
 	}
 	public void setArrayMusican(int n) {
@@ -21,14 +21,66 @@ public class MusicianControl extends PerformerControl{
 		for(int i =0; i<artistLength; i++ ) {
 			super.listPerformer(i, id);
 		}
-		System.out.println("which artist do you want to add like a musician");
-		int performer =sc.nextInt();
-		System.out.println("put the year that he/she was born");
-		int year=sc.nextInt();
-		System.out.println("put the monrh that he/she was born");
-		int month=sc.nextInt();
-		System.out.println("put the day that he/she was bonr");
-		int day=sc.nextInt();
+		int year=0;
+		boolean numberVerif=true;
+		int performer=0;
+		int month=0;
+		int day=0;
+		while(numberVerif)
+		{
+			System.out.println("which artist do you want to add like a musician");
+			String performerString=sc.nextLine();
+			try {
+				performer=Integer.parseInt(performerString);
+				numberVerif=false;
+			}catch(NumberFormatException e){
+				System.out.println("put a valid perfomer number");
+			}
+		}
+		if(super.nullPerforme(n)!=null)
+		{
+			numberVerif=true;
+			
+			while(numberVerif)
+			{
+				System.out.println("put the year that he/she was born");
+				String yearString=sc.nextLine();
+				try {
+					performer=Integer.parseInt(yearString);
+					numberVerif=false;
+				}catch(NumberFormatException e){
+					System.out.println("put year needs to be a number");
+				}
+			}
+			numberVerif=true;
+			
+			while(numberVerif)
+			{
+				System.out.println("put the monrh that he/she was born");
+				String monthString=sc.nextLine();
+				try {
+					performer=Integer.parseInt(monthString);
+					numberVerif=false;
+				}catch(NumberFormatException e){
+					System.out.println("put month needs to be a number");
+				}
+			}
+			numberVerif=true;
+			
+			while(numberVerif)
+			{
+				System.out.println("put the day that he/she was born");
+				String dayString=sc.nextLine();
+				try {
+					performer=Integer.parseInt(dayString);
+					numberVerif=false;
+				}catch(NumberFormatException e){
+					System.out.println("put month needs to be a number");
+				}
+			}
+		}
+		setId(n,id);
+		createMusican(year, month, day, n);
 	}
 	public void deleteMusican(int n) {
 		super.deletePerformer(n);
@@ -39,11 +91,16 @@ public class MusicianControl extends PerformerControl{
 		musc.setId(n, id);
 	}
 	public void listMusician(int n,int id)
-	{
-		if(id==pr.getId(n))
+	{	
+		if(musc.getNameArtist(n)!=null)
 		{
-			super.listPerformer(n, id);
-			System.out.println(musc.getBirthDate(n));
+			if(id==pr.getId(n))
+			{
+				super.listPerformer(n, id);
+				System.out.println(musc.getBirthDate(n));
+			}else {
+				System.out.println("there is no musician");
+			}
 		}
 	}
 

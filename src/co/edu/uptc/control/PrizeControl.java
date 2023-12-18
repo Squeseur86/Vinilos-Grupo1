@@ -18,18 +18,51 @@ public class PrizeControl {
 	
 	public static void detailPrize(Scanner sc,int n) {
 		System.out.println("put the name of the album");
-		String name =sc.next();
+		String name =sc.nextLine();
 		System.out.println("put the name of the organization");
-		String organization=sc.next();
+		String organization=sc.nextLine();
 		System.out.println("write the album description");
-		String description=sc.next();
+		String description=sc.nextLine();
 		System.out.println("put the hours of the album");
-		System.out.println("put the year that was recive the prize");
-		int year=sc.nextInt();
-		System.out.println("put the month(1-12) that was recive the price");
-		int month=sc.nextInt()-1;
-		System.out.println("put the day that was recive the prize");
-		int date=sc.nextInt();
+		boolean numberVerif=true;
+		int year=0;
+		while(numberVerif)
+		{
+			System.out.println("put the year of the album");
+			String yearString=sc.nextLine();
+			try {
+				year=Integer.parseInt(yearString);
+				numberVerif=false;
+			}catch(NumberFormatException e){
+				System.out.println("the year needs to be a number");
+			}
+		}
+		numberVerif=true;
+		int month=0;
+		while(numberVerif)
+		{
+			System.out.println("put the month of the album");
+			String monthString=sc.nextLine();
+			try {
+				month=Integer.parseInt(monthString);
+				numberVerif=false;
+			}catch(NumberFormatException e){
+				System.out.println("the month needs to be a number");
+			}
+		}
+		numberVerif=true;
+		int date=0;
+		while(numberVerif)
+		{
+			System.out.println("put the day of the album");
+			String dateString=sc.nextLine();
+			try {
+				date=Integer.parseInt(dateString);
+				numberVerif=false;
+			}catch(NumberFormatException e){
+				System.out.println("the day needs to be a number");
+			}
+		}
 		createPrize(organization,name,description,year,month,date,n);
 	}
 	public void setArrayAlbum(int n) {
@@ -41,14 +74,20 @@ public class PrizeControl {
 	}
 	public void listPrizes(int n,int id)
 	{
-		if(id==prz.getId(n))
+		if(prz.getName(n)!=null)
 		{
-			System.out.println(prz.getOrganization(n));
-			System.out.println(prz.getName(n));
-			System.out.println(prz.getDescription(n));
-			System.out.println(prz.getPremiationDate(n));
-			
+			if(id==prz.getId(n))
+			{
+				System.out.println(prz.getOrganization(n));
+				System.out.println(prz.getName(n));
+				System.out.println(prz.getDescription(n));
+				System.out.println(prz.getPremiationDate(n));
+				
+			}
+		}else {
+			System.out.println("there is no prize");
 		}
+		
 	}
 	public void setPricedate(Scanner sc,int n) {
 		int year=sc.nextInt();

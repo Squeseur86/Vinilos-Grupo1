@@ -24,11 +24,11 @@ public class PerformerControl {
 	}
 	public static void detailPerformer(Scanner sc, int n) {
 		System.out.println("put the name of the Artist");
-		String nameArt = sc.next();
+		String nameArt = sc.nextLine();
 		System.out.println("put the url of the image of the artist");
-		String imageArt = sc.next();
+		String imageArt = sc.nextLine();
 		System.out.println("Put the description of the artist");
-		String descrArt = sc.next();
+		String descrArt = sc.nextLine();
 		createPerformer(nameArt, imageArt, descrArt, n);
 	}
 

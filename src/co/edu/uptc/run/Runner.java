@@ -30,6 +30,15 @@ public class Runner {
 		System.out.println("Welcome to the vinyl store, regsister");
 		System.out.println("enter your username");
 		username = sc.nextLine();
+		while(username.contains(" "))
+		{
+			if(username.contains(" "))
+			{
+				System.out.println("do not use space in username");
+			}
+			System.out.println("enter your username");
+			username = sc.nextLine();
+		}
 		System.out.println("enter your number tellphone ten digits");
 		tellphone = sc.nextLine();
 		while(tellphone.length()!=10||tellphone.contains(" ")) {
@@ -210,6 +219,7 @@ public class Runner {
 							{
 								a1.listAlbNames(i);
 							}
+							x=true;
 							while(x)
 							{
 								System.out.println("Which album do you want to add performer");
@@ -257,7 +267,7 @@ public class Runner {
 							{
 								for(int i=0;i<contPerf;i++)
 								{
-									perfC.listPerformer(i, id);
+									perfC.listPerformer(i, id-1);
 								}
 								x=true;
 								while(x)
@@ -280,8 +290,8 @@ public class Runner {
 								if(perfC.nullPerforme(id-1)!=null)
 								{
 									response1=sc.nextInt();
-									perfC.deletePerformer(response1);
-									perfC.listPerformer(response1, id);
+									perfC.deletePerformer(response1-1);
+									perfC.listPerformer(response1-1, id-1);
 								}else {
 									System.out.println("there is no performer with this number");
 								}
@@ -314,7 +324,7 @@ public class Runner {
 							{
 								for(int i=0;i<contPerf;i++)
 								{
-									perfC.listPerformer(i, id);
+									perfC.listPerformer(i, id-1);
 								}
 								x=true;
 								while(x)
@@ -332,8 +342,8 @@ public class Runner {
 								}
 								if(perfC.nullPerforme(id-1)!=null)
 								{
-									perfC.detailPerformer(sc,response1);
-									perfC.listPerformer(response1,id-1);
+									perfC.detailPerformer(sc,response1-1);
+									perfC.listPerformer(response1-1,id-1);
 								}else {
 									System.out.println("there is no performer with this number");
 								}
@@ -360,14 +370,14 @@ public class Runner {
 								System.out.println("1.band");
 								System.out.println("2. musician");
 								System.out.print("3. prize");
-								option = sc.next();
+								option = sc.nextLine();
 								switch(option) {
 								case "1" :
 									System.out.println("Choose the option");
 									System.out.println("1 edit band");
 									System.out.println("2 delete band");
 									System.out.println("3 add band to album");
-									option = sc.next();
+									option = sc.nextLine();
 									switch(option) {
 									
 									case "1" :
@@ -394,7 +404,7 @@ public class Runner {
 										{
 											for(int i=0;i<contPerf;i++)
 											{
-												perfC.listPerformer(i, id);
+												perfC.listPerformer(i, id-1);
 											}
 											x=true;
 											while(x)
@@ -412,8 +422,13 @@ public class Runner {
 											}
 											if(perfC.nullPerforme(id-1)!=null)
 											{
+												for(int i=0;i<contPerf;i++)
+												{
+													bdC.listBand(i, id-1);
+												}
+	
 												x=true;
-												while(x=true) {
+												while(x) {
 													System.out.println("Which band do you want to edit ");
 													option=sc.nextLine();
 													try {
@@ -423,7 +438,7 @@ public class Runner {
 														System.out.println("put the band number");
 													}
 												}
-												bdC.detailBand(sc, response1);
+												bdC.detailBand(sc, response1-1);
 												bdC.listBand((response1-1),(id-1));
 											}else {
 												System.out.println("there is no performer with this number");
@@ -458,7 +473,7 @@ public class Runner {
 										{
 											for(int i=0;i<contPerf;i++)
 											{
-												perfC.listPerformer(i, id);
+												perfC.listPerformer(i, id-1);
 											}
 											x=true;
 											while(x)
@@ -476,8 +491,13 @@ public class Runner {
 											}
 											if(perfC.nullPerforme(id-1)!=null)
 											{
+												for(int i=0;i<contPerf;i++)
+												{
+													bdC.listBand(i, id-1);
+												}
+	
 												x=true;
-												while(x=true) {
+												while(x) {
 													System.out.println("Which band do you want to edit ");
 													option=sc.nextLine();
 													try {
@@ -487,7 +507,7 @@ public class Runner {
 														System.out.println("put the band number");
 													}
 												}
-												bdC.deleteBand(response1);
+												bdC.deleteBand(response1-1);
 												bdC.listBand((response1-1),(id-1));
 											}else {
 												System.out.println("there is no performer with this number");
@@ -521,7 +541,7 @@ public class Runner {
 										{
 											for(int i=0;i<contPerf;i++)
 											{
-												perfC.listPerformer(i, id);
+												perfC.listPerformer(i, id-1);
 											}
 											x=true;
 											while(x)
@@ -539,8 +559,13 @@ public class Runner {
 											}
 											if(perfC.nullPerforme(id-1)!=null)
 											{
+												for(int i=0;i<contPerf;i++)
+												{
+													bdC.listBand(i, id-1);
+												}
+	
 												x=true;
-												while(x=true) {
+												while(x) {
 													System.out.println("Which band do you want to edit ");
 													option=sc.nextLine();
 													try {
@@ -550,7 +575,7 @@ public class Runner {
 														System.out.println("put the band number");
 													}
 												}
-												bdC.deleteBand(response1);
+												bdC.deleteBand(response1-1);
 												bdC.listBand((response1-1),(id-1));
 												bdC.setId((id-1), (response1-1));
 												bdC.listBand(response1, (id-1));
@@ -569,7 +594,7 @@ public class Runner {
 									System.out.println("1 edit musician");
 									System.out.println("2 delete musician");
 									System.out.println("3 add musician to album");
-									option = sc.next();
+									option = sc.nextLine();
 									switch(option) {
 									
 									case "1" :
@@ -596,7 +621,7 @@ public class Runner {
 										{
 											for(int i=0;i<contPerf;i++)
 											{
-												perfC.listPerformer(i, id);
+												perfC.listPerformer(i, id-1);
 											}
 											x=true;
 											while(x)
@@ -614,8 +639,12 @@ public class Runner {
 											}
 											if(perfC.nullPerforme(id-1)!=null)
 											{
+												for(int i=0;i<contPerf;i++)
+												{
+													msC.listMusician(i, id-1);
+												}
 												x=true;
-												while(x=true) {
+												while(x) {
 													System.out.println("Which musician do you want to edit ");
 													option=sc.nextLine();
 													try {
@@ -658,7 +687,7 @@ public class Runner {
 										{
 											for(int i=0;i<contPerf;i++)
 											{
-												perfC.listPerformer(i, id);
+												perfC.listPerformer(i, id-1);
 											}
 											x=true;
 											while(x)
@@ -676,8 +705,12 @@ public class Runner {
 											}
 											if(perfC.nullPerforme(id-1)!=null)
 											{
+												for(int i=0;i<contPerf;i++)
+												{
+													msC.listMusician(i, id-1);
+												}
 												x=true;
-												while(x=true) {
+												while(x) {
 													System.out.println("Which musician do you want to delete ");
 													option=sc.nextLine();
 													try {
@@ -719,7 +752,7 @@ public class Runner {
 										{
 											for(int i=0;i<contPerf;i++)
 											{
-												perfC.listPerformer(i, id);
+												perfC.listPerformer(i, id-1);
 											}
 											x=true;
 											while(x)
@@ -737,8 +770,12 @@ public class Runner {
 											}
 											if(perfC.nullPerforme(id-1)!=null)
 											{
+												for(int i=0;i<contPerf;i++)
+												{
+													msC.listMusician(i, id-1);
+												}
 												x=true;
-												while(x=true) {
+												while(x) {
 													System.out.println("Which musician do you want to add to an album ");
 													option=sc.nextLine();
 													try {
@@ -766,7 +803,7 @@ public class Runner {
 									System.out.println("1 edit prize");
 									System.out.println("2 update prize date");
 									System.out.println("3. detail artist");
-									option=sc.next();
+									option=sc.nextLine();
 									switch(option) {
 										case "1" :
 											
@@ -792,9 +829,13 @@ public class Runner {
 											{
 												for(int i=0;i<contPerf;i++)
 												{
-													perfC.listPerformer(i, id);
+													perfC.listPerformer(i, id-1);
 												}
 												x=true;
+												for(int i=0;i<contPerf;i++)
+												{
+													przC.listPrizes(i, id-1);
+												}
 												while(x)
 												{
 													System.out.println("Which perfomer do you want to edit prize ");
@@ -817,6 +858,7 @@ public class Runner {
 											}else {
 												System.out.println("there is no album with this number");
 											}
+											break;
 										case "2" :
 											System.out.println("Which album do you want to choose");
 											for(int i=0;i<lengthAlbum;i++)
@@ -841,7 +883,11 @@ public class Runner {
 											{
 												for(int i=0;i<contPerf;i++)
 												{
-													perfC.listPerformer(i, id);
+													perfC.listPerformer(i, id-1);
+												}
+												for(int i=0;i<contPerf;i++)
+												{
+													przC.listPrizes(i, id-1);
 												}
 												x=true;
 												while(x)
@@ -870,7 +916,7 @@ public class Runner {
 										case "3" :
 											for(int i=0;i<contPerf;i++)
 											{
-												perfC.listPerformer(i, id);
+												perfC.listPerformer(i, id-1);
 											}
 											x=true;
 											while(x)
@@ -935,7 +981,7 @@ public class Runner {
 					System.out.println("1 edit song");
 					System.out.println("2 delete song");
 					System.out.println("3 take out song");
-					option=sc.next();
+					option=sc.nextLine();
 					
 					switch(option)
 					{
@@ -981,8 +1027,8 @@ public class Runner {
 								}
 								if(Sco.nullSong(response1-1)!=null)
 								{
-									Sco.detailSong(sc, response1);
-									Sco.listSongs(response1,(id-1));	
+									Sco.detailSong(sc, response1-1);
+									Sco.listSongs(response1-1,(id-1));	
 								}else {
 									System.out.println("there is no song with this number");
 								}
@@ -1032,8 +1078,8 @@ public class Runner {
 								}
 								if(Sco.nullSong(response1-1)!=null)
 								{
-									Sco.delateSong(response1);
-									Sco.listSongs(response1,id);
+									Sco.delateSong(response1-1);
+									Sco.listSongs(response1-1,id-1);
 								}else {
 									System.out.println("there is no song with this number");
 								}
@@ -1168,14 +1214,14 @@ public class Runner {
 							}
 							break;
 						case "2":
-							for(int i=0;i<n;i++) {
+							for(int i=0;i<lengthAlbum;i++) {
 								a1.listAlbum(i);
 							}
-							for(int i=0;i<n;i++) {
+							for(int i=0;i<lengthAlbum;i++) {
 								System.out.println("Album price "+(i+1));
 								a1.getPrice(i);
 							}
-							
+							x=true;
 							while(x)
 							{
 								System.out.println("Which album fo you want to buy");
@@ -1189,10 +1235,10 @@ public class Runner {
 									System.out.println("put the album number");
 								}
 							}
-							if(a1.nullAlbum(response1-1)!=null)
+							if(a1.nullAlbum((response1-1))!=null)
 							{
-								purcharse=response1-1;
-								a1.purchasingAlbum(response1);
+								purcharse=response1;
+								a1.purchasingAlbum(purcharse);
 							}else {
 								System.out.println("there is no album with this number");
 							}
@@ -1225,6 +1271,15 @@ public class Runner {
 				case "7":
 					System.out.println("enter your username");
 					username = sc.nextLine();
+					while(username.contains(" "))
+					{
+						if(username.contains(" "))
+						{
+							System.out.println("do not use space in username");
+						}
+						System.out.println("enter your username");
+						username = sc.nextLine();
+					}
 					System.out.println("enter your number tellphone ten digits");
 					tellphone = sc.nextLine();
 					while(tellphone.length()!=10&& tellphone.contains(" ")) {
@@ -1298,7 +1353,7 @@ public class Runner {
 									
 								
 							}catch(NumberFormatException e){
-								System.out.println("put the song number");
+								System.out.println("put the performer number");
 							}
 						}
 						if(perfC.nullPerforme(response1-1)!=null)
@@ -1307,7 +1362,6 @@ public class Runner {
 							msC.listMusician(response1-1, id-1);
 							przC.listPrizes(response1-1, id-1);
 						}else {
-							System.out.println("there is no song with this number");
 						}
 					}else {
 						System.out.println("there is no album with this number");

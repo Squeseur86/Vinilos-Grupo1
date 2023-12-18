@@ -24,7 +24,7 @@ public class AlbumControl {
 		a1.setRecordLabel(hours, minutes, seconds,n);	
 	}
 	public void listAlbum(int n) {
-		System.out.println(n+1+" Album name: "+a1.getName(n) );
+		System.out.println((n+1)+" Album name: "+a1.getName(n) );
 		System.out.println("cover: "+a1.getCover(n) );
 		System.out.println("description: "+a1.getDescription(n) );
 		System.out.println("realse date: "+a1.getReleaseDate(n) );
@@ -140,7 +140,7 @@ public class AlbumControl {
 	}
 	public String purchasingAlbum(int response)
 	{
-		if(a1.getPrice(response-1)==0)
+		if(a1.getPrice(response)==0)
 		{
 			return null;
 		}else {
