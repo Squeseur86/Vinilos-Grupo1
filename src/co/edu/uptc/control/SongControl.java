@@ -62,7 +62,11 @@ public class SongControl {
 			String minutesString=sc.nextLine();
 			try {
 				minutes=Integer.parseInt(minutesString);
+				if(minutes<0 || minutes>60) {
+					System.out.println("This year is invalid, can not be less than 0 and greater than 60");
+				}else {
 				numberVerif=false;
+				}
 			}catch(NumberFormatException e){
 				System.out.println("the minutes needs to be a number");
 			}
@@ -74,7 +78,11 @@ public class SongControl {
 			String secondsString=sc.nextLine();
 			try {
 				seconds=Integer.parseInt(secondsString);
+				if(seconds<0 || seconds>60) {
+					System.out.println("This seconds is invalid, can not be less than 0 and greater than 60\"");
+				}else{
 				numberVerif=false;
+				}
 			}catch(NumberFormatException e){
 				System.out.println("the seconds needs to be a number");
 			}

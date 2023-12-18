@@ -25,7 +25,7 @@ public class CollectorControl {
 	public void detailmesage(Scanner sc, int n){
 		boolean numberVerif=true;
 		System.out.println("Do you want create a new message, 1 yes, 2 no");
-		int opcC = sc.nextInt();
+		int opcC = Integer.parseInt(sc.nextLine());
 		String raitcad ="";
 		if(opcC ==1 ) {
 			while(numberVerif) {
@@ -34,7 +34,7 @@ public class CollectorControl {
 				try {
 					int raiting = Integer.parseInt(raitcad);
 					if(raiting<0 || raiting > 5) {
-						System.out.println("This raiting is invalid");
+						System.out.println("This raiting is invalid, can not be less than 0 and greater than 5");
 					}else {
 						numberVerif=false;
 					}

@@ -40,13 +40,17 @@ public class AlbumControl {
 		System.out.println("write the album description");
 		String description=sc.nextLine();
 		int hours=0;
-		while(numberVerif)
+		while(numberVerif )
 		{
 			System.out.println("put the hours of the album");
 			String hoursString=sc.nextLine();
 			try {
 				hours=Integer.parseInt(hoursString);
+				if(hours<0 ) {
+					System.out.println("This hour is invalid, can not be less than zero");
+				}else {
 				numberVerif=false;
+				}
 			}catch(NumberFormatException e){
 				System.out.println("the hours needs to be a number");
 			}
@@ -59,7 +63,11 @@ public class AlbumControl {
 			String minutesString=sc.nextLine();
 			try {
 				minutes=Integer.parseInt(minutesString);
+				if(minutes<0 || minutes >60) {
+					System.out.println("This minutes is invalid, can not be less than zero and greater than 60");
+				}else {
 				numberVerif=false;
+				}
 			}catch(NumberFormatException e){
 				System.out.println("the minutes needs to be a number");
 			}
@@ -72,7 +80,11 @@ public class AlbumControl {
 			String secondsString=sc.nextLine();
 			try {
 				seconds=Integer.parseInt(secondsString);
+				if(seconds<0 || seconds>60) {
+					System.out.println("This seconds is invalid, can not be less than zero and greater than 60");
+				}else {
 				numberVerif=false;
+				}
 			}catch(NumberFormatException e){
 				System.out.println("the seconds needs to be a number");
 			}
@@ -85,7 +97,11 @@ public class AlbumControl {
 			String yearString=sc.nextLine();
 			try {
 				year=Integer.parseInt(yearString);
+				if(year<1860 || year> 2024) {
+					System.out.println("This year is invalid, can not be less than 1860 and greater than 2024");
+				}else {
 				numberVerif=false;
+				}
 			}catch(NumberFormatException e){
 				System.out.println("the year needs to be a number");
 			}
@@ -99,7 +115,11 @@ public class AlbumControl {
 			String monthString=sc.nextLine();
 			try {
 				month=Integer.parseInt(monthString);
+				if(month<1 || month>12) {
+					System.out.println("This month is invalid, can not be less than 1 and greater than 12");
+				}else {
 				numberVerif=false;
+				}
 			}catch(NumberFormatException e){
 				System.out.println("the month needs to be a number");
 			}
@@ -112,7 +132,11 @@ public class AlbumControl {
 			String dateString=sc.nextLine();
 			try {
 				date=Integer.parseInt(dateString);
+				if(date<0 || date>31) {
+					System.out.println("This year is invalid, can not be less than 1 and greater than 31");
+				}else {
 				numberVerif=false;
+				}
 			}catch(NumberFormatException e){
 				System.out.println("the day needs to be a number");
 			}
