@@ -35,7 +35,11 @@ public class BandControl extends PerformerControl {
 			String yearString=sc.nextLine();
 			try {
 				year=Integer.parseInt(yearString);
+				if(year<1860 || year> 2024) {
+					System.out.println("This year is invalid, can not be less than 1860 and greater than 2024");
+				}else {
 				numberVerif=false;
+				}
 			}catch(NumberFormatException e){
 				System.out.println("the year needs to be a number");
 			}
@@ -48,7 +52,11 @@ public class BandControl extends PerformerControl {
 			String monthString=sc.nextLine();
 			try {
 				month=Integer.parseInt(monthString);
+				if(month<1 || month>12) {
+					System.out.println("This month is invalid, can not be less than 1 and greater than 12");
+				}else {
 				numberVerif=false;
+				}
 			}catch(NumberFormatException e){
 				System.out.println("the month needs to be a number");
 			}
@@ -61,7 +69,11 @@ public class BandControl extends PerformerControl {
 			String dateString=sc.nextLine();
 			try {
 				date=Integer.parseInt(dateString);
+				if(date<0 || date>31) {
+					System.out.println("This year is invalid, can not be less than 1 and greater than 31");
+				}else {
 				numberVerif=false;
+				}
 			}catch(NumberFormatException e){
 				System.out.println("the day needs to be a number");
 			}

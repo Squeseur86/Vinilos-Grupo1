@@ -50,8 +50,23 @@ public class SongControl {
 		boolean numberVerif=true;
 		System.out.println("put the name of the song");
 		String nameSong = sc.nextLine();
-		System.out.println("put the year relase of the song");
-		String yearRelease = sc.nextLine();
+		numberVerif=true;
+		int year=0;
+		while(numberVerif)
+		{
+			System.out.println("put the year relase of the song");
+			String yearRelease = sc.nextLine();
+			try {
+				year=Integer.parseInt(yearRelease);
+				if(year<1860 || year> 2024) {
+					System.out.println("This year is invalid, can not be less than 1860 and greater than 2024");
+				}else {
+				numberVerif=false;
+				}
+			}catch(NumberFormatException e){
+				System.out.println("the year needs to be a number");
+			}
+		}
 		System.out.println("put the genre of the song");
 		String genreSong = sc.nextLine();
 		
