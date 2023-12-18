@@ -5,14 +5,11 @@ import co.edu.uptc.model.Musician;
 
 public class MusicianControl extends PerformerControl{
 	
-	static Musician musc= new Musician();
+	Musician musc= new Musician();
 	
-	public MusicianControl() {
-		super();
-		musc=new Musician();
-	}
-	public static void createMusican(int year,int month,int day,int n) {
-		musc.setBirthDate(year, month, day, n);
+	public void createMusican(String nameArtist, String imageArtist, String descriptionArtist, int year, int month, int day, int n) {
+			super.createPerformer(nameArtist, imageArtist, descriptionArtist, n);
+			musc.setBirthDate(year, month, day, n);
 	}
 	public void setArrayMusican(int n) {
 		musc.setArray(n);
@@ -90,9 +87,16 @@ public class MusicianControl extends PerformerControl{
 					System.out.println("put month needs to be a number");
 				}
 			}
+			
 		}
+		System.out.println("put the name of the Artists");
+		String nameArt = sc.nextLine();
+		System.out.println("put the url of the image of the artist");
+		String imageArt = sc.nextLine();
+		System.out.println("Put the description of the artist");
+		String descrArt = sc.nextLine();
 		setId(n,id);
-		createMusican(year, month, day, n);
+		createMusican(nameArt,imageArt,descrArt,year, month, day, n);
 	}
 	public void deleteMusican(int n) {
 		super.deletePerformer(n);
@@ -106,13 +110,13 @@ public class MusicianControl extends PerformerControl{
 	{	
 		if(musc.getNameArtist(n)!=null)
 		{
-			if(id==pr.getId(n))
+			if(id==musc.getId(n))
 			{
-				super.listPerformer(n, id);
-				System.out.println(musc.getBirthDate(n));
-			}else {
-				System.out.println("there is no musician create one with the number in console");
+			super.listPerformer(n, id);
+			System.out.println(musc.getBirthDate(n));
 			}
+		}else {
+			System.out.println("there is no musician create one with the number in console");
 		}
 	}
 

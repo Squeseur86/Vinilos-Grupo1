@@ -32,4 +32,9 @@ public class Musician extends Performer{
 		birthDate =new Calendar[n];
 		id = new int[n];
 	}
+	public Musician(String[] nameArtist, String[] imageArtist, String[] descriptionArtist, int[] id, Calendar[] creationDate) {
+		super(nameArtist, imageArtist, descriptionArtist, id);
+		this.birthDate = birthDate;
+	}
+
 }

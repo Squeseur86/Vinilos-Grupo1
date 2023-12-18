@@ -23,7 +23,6 @@ public class PrizeControl {
 		String organization=sc.nextLine();
 		System.out.println("write the album description");
 		String description=sc.nextLine();
-		System.out.println("put the hours of the album");
 		boolean numberVerif=true;
 		int year=0;
 		while(numberVerif)
@@ -90,6 +89,7 @@ public class PrizeControl {
 		{
 			if(id==prz.getId(n))
 			{
+				System.out.println(n);
 				System.out.println(prz.getOrganization(n));
 				System.out.println(prz.getName(n));
 				System.out.println(prz.getDescription(n));
@@ -102,11 +102,57 @@ public class PrizeControl {
 		
 	}
 	public void setPricedate(Scanner sc,int n) {
-		int year=sc.nextInt();
-		System.out.println("put the month(1-12) that was recive the price");
-		int month=sc.nextInt()-1;
-		System.out.println("put the day that was recive the prize");
-		int date=sc.nextInt();
+		boolean numberVerif=true;
+		int year=0;
+		while(numberVerif)
+		{
+			System.out.println("put the year of the album");
+			String yearString=sc.nextLine();
+			try {
+				year=Integer.parseInt(yearString);
+				if(year<1860 || year> 2024) {
+					System.out.println("This year is invalid, can not be less than 1860 and greater than 2024");
+				}else {
+				numberVerif=false;
+				}
+			}catch(NumberFormatException e){
+				System.out.println("the year needs to be a number");
+			}
+		}
+		numberVerif=true;
+		int month=0;
+		while(numberVerif)
+		{
+			System.out.println("put the month of the album");
+			String monthString=sc.nextLine();
+			try {
+				month=Integer.parseInt(monthString);
+				if(month<1 || month>12) {
+					System.out.println("This month is invalid, can not be less than 1 and greater than 12");
+				}else {
+				numberVerif=false;
+				}
+			}catch(NumberFormatException e){
+				System.out.println("the month needs to be a number");
+			}
+		}
+		numberVerif=true;
+		int date=0;
+		while(numberVerif)
+		{
+			System.out.println("put the day of the album");
+			String dateString=sc.nextLine();
+			try {
+				date=Integer.parseInt(dateString);
+				if(date<0 || date>31) {
+					System.out.println("This year is invalid, can not be less than 1 and greater than 31");
+				}else {
+				numberVerif=false;
+				}
+			}catch(NumberFormatException e){
+				System.out.println("the day needs to be a number");
+			}
+		}
 		prz.setPremiationDate(year, month, date, n);
 	}
 }
