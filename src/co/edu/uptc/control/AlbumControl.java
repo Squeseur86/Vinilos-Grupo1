@@ -35,10 +35,22 @@ public class AlbumControl {
 		boolean numberVerif=true;
 		System.out.println("put the name of the album");
 		String name =sc.nextLine();
+		while(name.length()<1) {
+			System.out.println("put the name of the album");
+			name = sc.nextLine();
+		}
 		System.out.println("put the image url ");
 		String cover=sc.nextLine();
+		while(cover.length()<1) {
+			System.out.println("put the image url ");
+			cover=sc.nextLine();
+		}
 		System.out.println("write the album description");
 		String description=sc.nextLine();
+		while(description.length()<1) {
+			System.out.println("write the album description");
+			description=sc.nextLine();
+		}
 		int hours=0;
 		while(numberVerif )
 		{
