@@ -111,7 +111,7 @@ public class MusicianControl extends PerformerControl{
 				super.listPerformer(n, id);
 				System.out.println(musc.getBirthDate(n));
 			}else {
-				System.out.println("there is no musician");
+				System.out.println("there is no musician create one with the number in console");
 			}
 		}
 	}

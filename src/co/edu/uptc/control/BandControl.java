@@ -15,10 +15,23 @@ public class BandControl extends PerformerControl {
 		bd.setId(id, n);
 	}
 	public void detailBand(Scanner sc, int n) {
+		boolean numberVerif=true;
 		System.out.println("put the name of the principal artist");
-		String nameArt = sc.next();
-		System.out.println("put the number of the member of the band");
-		int opc = sc.nextInt();
+		String nameArt = sc.nextLine();
+		numberVerif=true;
+		int opc=0;
+		while(numberVerif)
+		{
+			System.out.println("put the number of the member of the band");
+			String opcString=sc.nextLine();
+			try {
+				opc=Integer.parseInt(opcString);
+				
+				numberVerif=false;
+			}catch(NumberFormatException e){
+				System.out.println("the month needs to be a number");
+			}
+		}
 		for(int i =0; i<opc; i++ ) {
 			System.out.println("put the name of the Artists");
 			nameArt = sc.nextLine();
@@ -27,7 +40,7 @@ public class BandControl extends PerformerControl {
 		String imageArt = sc.nextLine();
 		System.out.println("Put the description of the artist");
 		String descrArt = sc.nextLine();
-		boolean numberVerif=true;
+		numberVerif=true;
 		int year=0;
 		while(numberVerif)
 		{
@@ -96,7 +109,7 @@ public class BandControl extends PerformerControl {
 			System.out.println(bd.getCreationDate(n));
 			}
 		}else {
-			System.out.println("there is no band");
+			System.out.println("there is no band create one with the number in console");
 		}
 		
 	}

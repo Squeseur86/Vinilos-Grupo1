@@ -52,10 +52,11 @@ public class SongControl {
 		String nameSong = sc.nextLine();
 		numberVerif=true;
 		int year=0;
+		String yearRelease="";
 		while(numberVerif)
 		{
 			System.out.println("put the year relase of the song");
-			String yearRelease = sc.nextLine();
+			 yearRelease = sc.nextLine();
 			try {
 				year=Integer.parseInt(yearRelease);
 				if(year<1860 || year> 2024) {
@@ -71,6 +72,7 @@ public class SongControl {
 		String genreSong = sc.nextLine();
 		
 		int minutes=0;
+		numberVerif=true;
 		while(numberVerif)
 		{
 			System.out.println("put the minutes of the album");

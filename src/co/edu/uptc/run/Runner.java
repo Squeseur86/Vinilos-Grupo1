@@ -30,7 +30,7 @@ public class Runner {
 		System.out.println("Welcome to the vinyl store, regsister");
 		System.out.println("enter your username");
 		username = sc.nextLine();
-		while(username.contains(" "))
+		while(username.contains(" ")||username.contains(""))
 		{
 			if(username.contains(" "))
 			{
@@ -41,7 +41,7 @@ public class Runner {
 		}
 		System.out.println("enter your number tellphone ten digits");
 		tellphone = sc.nextLine();
-		while(tellphone.length()!=10||tellphone.contains(" ")) {
+		while(tellphone.length()!=10||tellphone.contains(" ")||tellphone.contains("")) {
 			if(tellphone.contains(" "))
 			{
 				System.out.println("this number tellphone is invalid-do not use space");
@@ -52,7 +52,7 @@ public class Runner {
 		}
 		System.out.println("enter your email ....@gmail.com");
 		email = sc.nextLine() + "@gmail.com";
-		while(email.contains(" "))
+		while(email.contains(" ")||email.contains(""))
 		{
 			System.out.println("this email is invalid-do not use space");
 			email = sc.nextLine() + "@gmail.com";
@@ -60,7 +60,7 @@ public class Runner {
 		System.out.println("enter your password 8 charts");
 
 		password = sc.nextLine();
-		while(password.length()<8||password.contains(" ")) {
+		while(password.length()<8||password.contains(" ")||password.contains("")) {
 			if(password.contains(" "))
 			{
 				System.out.println("this passoword is invalid-do not use space");
@@ -1271,7 +1271,7 @@ public class Runner {
 				case "7":
 					System.out.println("enter your username");
 					username = sc.nextLine();
-					while(username.contains(" "))
+					while(username.contains(" ")||username.contains(""))
 					{
 						if(username.contains(" "))
 						{
@@ -1282,7 +1282,7 @@ public class Runner {
 					}
 					System.out.println("enter your number tellphone ten digits");
 					tellphone = sc.nextLine();
-					while(tellphone.length()!=10&& tellphone.contains(" ")) {
+					while(tellphone.length()!=10&& tellphone.contains(" ")||tellphone.contains("")) {
 						if(tellphone.contains(" "))
 						{
 							System.out.println("this number tellphone is invalid-do not use space");
@@ -1293,14 +1293,14 @@ public class Runner {
 					}
 					System.out.println("enter your email ....@gmail.com");
 					email = sc.nextLine() + "@gmail.com ";
-					while(email.contains(" "))
+					while(email.contains(" ")||email.contains(""))
 					{
 						System.out.println("this email is invalid-do not use space");
 						email=sc.nextLine();
 					}
 					System.out.println("enter your password 8 charts");
 					password = sc.nextLine();
-					while(password.length()<8&&password.contains(" ")) {
+					while(password.length()<8&&password.contains(" ")||password.contains("")) {
 						if(password.contains(" "))
 						{
 							System.out.println("this passoword is invalid-do not use space");

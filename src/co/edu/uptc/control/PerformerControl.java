@@ -44,11 +44,16 @@ public class PerformerControl {
 	}
 	public void listPerformer(int n,int id)
 	{
-		if(id==pr.getId(n))
-		{
-			System.out.println(pr.getNameArtist(n));
-			System.out.println(pr.getImageArtist(n));
-			System.out.println(pr.getDescriptionArtist(n));
+		if(pr.getNameArtist(n)!=null) {
+			if(id==pr.getId(n))
+			{
+				System.out.println(pr.getNameArtist(n));
+				System.out.println(pr.getImageArtist(n));
+				System.out.println(pr.getDescriptionArtist(n));
+			}
+		}else {
+			System.out.println("there is no performer create one with the number on console");
 		}
+		
 	}
 }

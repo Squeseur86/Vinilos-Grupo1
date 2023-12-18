@@ -97,7 +97,7 @@ public class PrizeControl {
 				
 			}
 		}else {
-			System.out.println("there is no prize");
+			System.out.println("there is no prize create one with the number in console");
 		}
 		
 	}
