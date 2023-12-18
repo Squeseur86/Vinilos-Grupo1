@@ -34,6 +34,12 @@ public class MusicianControl extends PerformerControl{
 				System.out.println("put a valid perfomer number");
 			}
 		}
+		System.out.println("put the name of the Artists");
+		String nameArt = sc.nextLine();
+		System.out.println("put the url of the image of the artist");
+		String imageArt = sc.nextLine();
+		System.out.println("Put the description of the artist");
+		String descrArt = sc.nextLine();
 		if(super.nullPerforme(n)!=null)
 		{
 			numberVerif=true;
@@ -89,12 +95,7 @@ public class MusicianControl extends PerformerControl{
 			}
 			
 		}
-		System.out.println("put the name of the Artists");
-		String nameArt = sc.nextLine();
-		System.out.println("put the url of the image of the artist");
-		String imageArt = sc.nextLine();
-		System.out.println("Put the description of the artist");
-		String descrArt = sc.nextLine();
+		
 		setId(n,id);
 		createMusican(nameArt,imageArt,descrArt,year, month, day, n);
 	}
@@ -108,16 +109,9 @@ public class MusicianControl extends PerformerControl{
 	}
 	public void listMusician(int n,int id)
 	{	
-		if(musc.getNameArtist(n)!=null)
-		{
-			if(id==musc.getId(n))
-			{
 			super.listPerformer(n, id);
 			System.out.println(musc.getBirthDate(n));
-			}
-		}else {
-			System.out.println("there is no musician create one with the number in console");
-		}
+		
 	}
 
 }

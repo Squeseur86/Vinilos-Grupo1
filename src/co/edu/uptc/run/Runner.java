@@ -21,7 +21,7 @@ public class Runner {
 		String name, nameSong, yearRelease;
 		String username, tellphone, email, password;
 		String cover;
-		int purcharse=0,lengthAlbum=0,contSong=0,contPerf=0,contMessage=0;
+		int purcharse=0,lengthAlbum=0,contSong=0,contPerf=0,contMessage=0,contMusic=0;
 		String description;
 		int hours,minutes,seconds,year,month,date,n=0,response1 = 0, opcC, comments = 0, opc = 0, id = 0, raiting, opcedit=1;
 		String genre, genreSong;
@@ -595,11 +595,12 @@ public class Runner {
 									System.out.println("1 edit musician");
 									System.out.println("2 delete musician");
 									System.out.println("3 add musician to album");
+									System.out.println("4 create musician ");
 									option = sc.nextLine();
 									switch(option) {
 									
 									case "1" :
-										
+										if(contMusic!=0) {
 										for(int i=0;i<lengthAlbum;i++)
 										{
 											a1.listAlbNames(i);
@@ -663,9 +664,12 @@ public class Runner {
 										}else {
 											System.out.println("there is no album with this number");
 										}
+										}else {
+											System.out.println("first create a musician");
+										}
 										break;
 									case "2" :
-										
+										if(contMusic!=0) {
 										for(int i=0;i<lengthAlbum;i++)
 										{
 											a1.listAlbNames(i);
@@ -729,8 +733,12 @@ public class Runner {
 										}else {
 											System.out.println("there is no album with this number");
 										}
+										}else {
+											System.out.println("first create a musician");
+										}
 										break;
 									case "3":
+										if(contMusic!=0) {
 										for(int i=0;i<lengthAlbum;i++)
 										{
 											a1.listAlbNames(i);
@@ -795,7 +803,31 @@ public class Runner {
 											System.out.println("there is no album with this number");
 										}
 		
-										
+										}else {
+											System.out.println("first create a musician");
+										}
+										break;
+									case "4":
+										for(int i=0;i<lengthAlbum;i++)
+										{
+											a1.listAlbNames(i);
+										}
+										x=true;
+										while(x)
+										{
+											System.out.println("Which album do you want to create musician");
+											option=sc.nextLine();
+											try {
+													id=Integer.parseInt(option);
+													x=false;
+													
+												
+											}catch(NumberFormatException e){
+												System.out.println("put the album number");
+											}
+										}
+										msC.detailMusician(sc, contPerf, contMusic,id-1);
+										contMusic++;
 										break;
 									}
 									break;

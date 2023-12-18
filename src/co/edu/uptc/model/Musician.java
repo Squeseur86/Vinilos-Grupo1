@@ -9,7 +9,7 @@ public class Musician extends Performer{
 	Calendar birthDate[];
 	int id[];
 	public  Musician() {
-		super();
+		
 	}
 	public Date getBirthDate(int n) {
 		
@@ -32,7 +32,7 @@ public class Musician extends Performer{
 		birthDate =new Calendar[n];
 		id = new int[n];
 	}
-	public Musician(String[] nameArtist, String[] imageArtist, String[] descriptionArtist, int[] id, Calendar[] creationDate) {
+	public Musician(String[] nameArtist, String[] imageArtist, String[] descriptionArtist, int[] id, Calendar[] birthDate) {
 		super(nameArtist, imageArtist, descriptionArtist, id);
 		this.birthDate = birthDate;
 	}
