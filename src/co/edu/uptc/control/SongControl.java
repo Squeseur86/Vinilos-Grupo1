@@ -3,6 +3,8 @@ package co.edu.uptc.control;
 import java.time.Duration;
 import java.util.Scanner;
 
+import org.junit.jupiter.api.IndicativeSentencesGeneration;
+
 import co.edu.uptc.model.Song;
 
 public class SongControl {
@@ -40,6 +42,9 @@ public class SongControl {
 		sg.setGenreSong(genreSong,n);
 		sg.setRecordSong(minutes, seconds,n);
 		
+	}
+	public String nullSong(int n) {
+		return sg.getNameSong(n);
 	}
 	public void detailSong(Scanner sc, int n) {
 		System.out.println("put the name of the song");

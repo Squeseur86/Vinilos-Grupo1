@@ -38,6 +38,10 @@ public class PerformerControl {
 	 pr.setImageArtist(null, n);
 	 pr.setDescriptionArtist(null, n);
 	}
+	public String nullPerforme(int n)
+	{
+		return pr.getNameArtist(n);
+	}
 	public void listPerformer(int n,int id)
 	{
 		if(id==pr.getId(n))
