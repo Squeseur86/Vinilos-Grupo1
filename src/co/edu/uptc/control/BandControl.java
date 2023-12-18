@@ -21,18 +21,51 @@ public class BandControl extends PerformerControl {
 		int opc = sc.nextInt();
 		for(int i =0; i<opc; i++ ) {
 			System.out.println("put the name of the Artists");
-			nameArt = sc.next();
+			nameArt = sc.nextLine();
 		}
 		System.out.println("put the url of the image of the artist");
-		String imageArt = sc.next();
+		String imageArt = sc.nextLine();
 		System.out.println("Put the description of the artist");
-		String descrArt = sc.next();
-		System.out.println("put the year that was released the album");
-		int year=sc.nextInt();
-		System.out.println("put the month(1-12) that was released the album");
-		int month=sc.nextInt()-1;
-		System.out.println("put the day that was released the album");
-		int date=sc.nextInt();
+		String descrArt = sc.nextLine();
+		boolean numberVerif=true;
+		int year=0;
+		while(numberVerif)
+		{
+			System.out.println("put the year of the album");
+			String yearString=sc.nextLine();
+			try {
+				year=Integer.parseInt(yearString);
+				numberVerif=false;
+			}catch(NumberFormatException e){
+				System.out.println("the year needs to be a number");
+			}
+		}
+		numberVerif=true;
+		int month=0;
+		while(numberVerif)
+		{
+			System.out.println("put the month of the album");
+			String monthString=sc.nextLine();
+			try {
+				month=Integer.parseInt(monthString);
+				numberVerif=false;
+			}catch(NumberFormatException e){
+				System.out.println("the month needs to be a number");
+			}
+		}
+		numberVerif=true;
+		int date=0;
+		while(numberVerif)
+		{
+			System.out.println("put the day of the album");
+			String dateString=sc.nextLine();
+			try {
+				date=Integer.parseInt(dateString);
+				numberVerif=false;
+			}catch(NumberFormatException e){
+				System.out.println("the day needs to be a number");
+			}
+		}
 		createBand(nameArt, imageArt, descrArt, year, month, date, n);
 	}
 	public void setArrayBand(int n){
@@ -43,11 +76,17 @@ public class BandControl extends PerformerControl {
 		bd.setCreationDate(0, 0, 0, n);
 	}
 	public void listBand(int n,int id) {
-		if(id==bd.getId(n))
+		if(bd.getNameArtist(n)!=null)
 		{
-		super.listPerformer(n, id);
-		System.out.println(bd.getCreationDate(n));
+			if(id==bd.getId(n))
+			{
+			super.listPerformer(n, id);
+			System.out.println(bd.getCreationDate(n));
+			}
+		}else {
+			System.out.println("there is no band");
 		}
+		
 	}
 	
 

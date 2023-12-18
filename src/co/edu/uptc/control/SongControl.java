@@ -47,17 +47,39 @@ public class SongControl {
 		return sg.getNameSong(n);
 	}
 	public void detailSong(Scanner sc, int n) {
+		boolean numberVerif=true;
 		System.out.println("put the name of the song");
-		String nameSong = sc.next();
+		String nameSong = sc.nextLine();
 		System.out.println("put the year relase of the song");
-		String yearRelease = sc.next();
+		String yearRelease = sc.nextLine();
 		System.out.println("put the genre of the song");
-		String genreSong = sc.next();
-		System.out.println("put the minutes of the song");
-		int minutes=sc.nextInt();
-		System.out.println("put the seconds of the song");
-		int seconds=sc.nextInt();
-		createSong(nameSong, yearRelease, genreSong, minutes, seconds,n);
+		String genreSong = sc.nextLine();
+		
+		int minutes=0;
+		while(numberVerif)
+		{
+			System.out.println("put the minutes of the album");
+			String minutesString=sc.nextLine();
+			try {
+				minutes=Integer.parseInt(minutesString);
+				numberVerif=false;
+			}catch(NumberFormatException e){
+				System.out.println("the minutes needs to be a number");
+			}
+		}
+		numberVerif=true;
+		int seconds=0;
+		while(numberVerif) {
+			System.out.println("put the seconds of the album");
+			String secondsString=sc.nextLine();
+			try {
+				seconds=Integer.parseInt(secondsString);
+				numberVerif=false;
+			}catch(NumberFormatException e){
+				System.out.println("the seconds needs to be a number");
+			}
+		}
+		 createSong(nameSong,yearRelease, genreSong, minutes, seconds,n);
 	}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
 	public void setId(int n,int id)
 	{

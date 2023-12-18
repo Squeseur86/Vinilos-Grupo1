@@ -23,22 +23,28 @@ public class CollectorControl {
 		cl.setArrays(m);
 	}
 	public void detailmesage(Scanner sc, int n){
-		
+		boolean numberVerif=true;
 		System.out.println("Do you want create a new message, 1 yes, 2 no");
 		int opcC = sc.nextInt();
+		String raitcad ="";
 		if(opcC ==1 ) {
-
-			System.out.println("let your raiting of 1-5");
-			String raitcad ;
-			raitcad= sc.next();
-			int raiting = Integer.parseInt(raitcad);
-			while(raiting<0 || raiting > 5) {
-				System.out.println("This raiting is invalid");
-				raiting = sc.nextInt();
+			while(numberVerif) {
+				System.out.println("let your raiting of 1-5");
+				raitcad= sc.nextLine();
+				try {
+					int raiting = Integer.parseInt(raitcad);
+					if(raiting<0 || raiting > 5) {
+						System.out.println("This raiting is invalid");
+					}else {
+						numberVerif=false;
+					}
+				}catch(NumberFormatException e) {
+					System.out.println("this raiting is invalid");
+				}
 			}
 			System.out.println("let your message");
 			String message;
-			message= sc.next();
+			message= sc.nextLine();
 			System.out.println(comments);
 			createMessage(message, raitcad, comments);
 			comments = comments +1;
